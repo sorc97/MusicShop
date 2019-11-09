@@ -3,40 +3,17 @@
   box-shadow: 0px 0px 10px #d0d0d0;
 }
 
-.container{
-  max-width: 1095px;
-  margin: auto;
-}
-
 .header-inner{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   padding: 20px 0px;
 }
 
 .logo{
   font-family: 'Lobster', open-sans;
   margin: 0px;
-  cursor: pointer;
-}
-
-.search-form{
-  border: 3px solid black;
-}
-
-.search-form>*{
-  padding: 10px 20px;
-  border: none;
-  font-size: 16px;
-}
-
-.search-form>*:focus{
-  outline: none;
-}
-
-.search-button{
-  background-color: #fff;
   cursor: pointer;
 }
 
@@ -60,7 +37,6 @@
 
 .cart-link{
   margin-right: 10px;
-  text-decoration: none;
   font-size: 16px;
   color: #000;
   transition: all .3s ease;
@@ -69,6 +45,3 @@
 .cart-elementsCounter{
   font-weight: bold;
 }
-
-
-

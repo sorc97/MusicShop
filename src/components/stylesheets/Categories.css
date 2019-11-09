@@ -1,0 +1,34 @@
+.categories{
+  position: relative;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  max-width: 350px;
+  padding-right: 30px;
+}
+
+.categories-list{
+  background-color: #fff;
+  max-width: 320px;
+  width: 100%;
+}
+
+.categories-item{
+  padding: 10px 15px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all .2s ease;
+  border-bottom: 2px solid #efefef;
+}
+
+.categories-item:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  .categories-list{
+    /* width: 100%;
+    margin-left: 20px; */
+  }
+}

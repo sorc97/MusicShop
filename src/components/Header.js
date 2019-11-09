@@ -2,6 +2,7 @@ import React from 'react'
 import Search from './Search'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 import './stylesheets/Header.css'
 
 const Header = ({ logo = 'unknown', elementsInCartAmout = 0 }) =>
@@ -23,4 +24,10 @@ const Header = ({ logo = 'unknown', elementsInCartAmout = 0 }) =>
     </div>
   </header>
 
+Header.propTypes = {
+  logo: PropTypes.string,
+  elementsInCartAmout: PropTypes.number
+}
+
 export default Header;
+

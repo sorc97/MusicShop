@@ -1,0 +1,21 @@
+.filters{
+  width: 100%;
+  background-color: #fff;
+  height: 50px;
+  padding: 0px 10px;
+}
+
+.filters-list{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.filters-item{
+  padding: 10px;
+  cursor: pointer;
+}
+
+.filters-item:hover{ 
+  text-decoration: underline;
+}
