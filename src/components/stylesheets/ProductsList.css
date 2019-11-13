@@ -1,5 +1,13 @@
 .products-list-wrapper{
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 5%;
   background-color: #fff;
   margin-top: 30px;
+}
+
+.products-list{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
+  justify-content: center;
 }

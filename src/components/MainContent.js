@@ -15,7 +15,7 @@ let categoriesItems = [
 ]
 
 const MainWrapper = () =>
-  <div className='main-wrapper'>
+  <div className='main-wrapper container'>
     <Categories categoriesItems={categoriesItems}/>
     <Products/>
   </div>

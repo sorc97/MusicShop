@@ -1,8 +1,9 @@
 .categories{
   position: relative;
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: center;
+  align-self: flex-start;
   max-width: 350px;
   padding-right: 30px;
 }
