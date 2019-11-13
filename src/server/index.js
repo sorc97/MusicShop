@@ -12,6 +12,6 @@ app.use(bodyParser.json());
 app.use('/api', require('./api')); 
 
 app.listen(
-  8080,
-  () => console.log('server working at 8080 port')
+  3000,
+  () => console.log('server working at 3000 port')
 )

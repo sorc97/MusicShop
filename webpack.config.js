@@ -11,7 +11,10 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     port: 4000,
-    contentBase: path.join(__dirname, 'public')
+    contentBase: path.join(__dirname, 'public'),
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   },
   module: {
     rules: [

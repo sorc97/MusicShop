@@ -1,6 +1,7 @@
 import React from 'react'
 import Filters from './Filters'
 import ProductsList from './ProductsList'
+import { ProductsListContainer } from '../redux/Containers'
 import './stylesheets/Products.css'
 
 const filters = [
@@ -12,7 +13,7 @@ const filters = [
 const Products = () => 
   <main className='products'>
     <Filters filters={filters}/>
-    <ProductsList/>
+    <ProductsListContainer/>
   </main>
 
 export default Products
