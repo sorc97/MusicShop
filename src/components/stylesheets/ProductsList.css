@@ -1,13 +1,22 @@
 .products-list-wrapper{
-  /* padding: 20px; */
-  padding: 5%;
+  padding: 20px;
+  /* padding: 5%; */
   background-color: #fff;
-  margin-top: 30px;
+  margin: 30px 0px;
 }
 
 .products-list{
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-evenly; */
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.products-mainCategory{
+  margin: 0px 0px 30px 0px;
+}
+
+@media screen and (max-width: 1300px) {
+  .products-list{ 
+    justify-content: center;
+  }
 }

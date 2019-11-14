@@ -1,6 +1,9 @@
 import { connect } from 'react-redux'
-import { productsFetchData } from './actionCreators'
+import { productsFetchData, fetchProductById } from './actionCreators'
+import { findById } from '../lib/array-helpers'
 import ProductsList from '../components/ProductsList'
+import ProductInfo from '../components/ProductInfo'
+
 
 export const ProductsListContainer = connect(
   state => ({
@@ -12,3 +15,19 @@ export const ProductsListContainer = connect(
     }
   })
 )(ProductsList)
+
+export const ProductInfoContainer = connect(
+  ({products}, {match}) => {
+    let product = findById(products, match.params.id);
+
+    return {
+      ...product,
+      productId: match.params.id
+    }
+  },
+  dispatch => ({
+    fetchProduct(url) {
+      dispatch(fetchProductById(url))
+    }
+  })
+)(ProductInfo)

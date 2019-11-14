@@ -11,9 +11,9 @@ const filters = [
 ]
 
 const Products = () => 
-  <main className='products'>
+  <div className='products'>
     <Filters filters={filters}/>
     <ProductsListContainer/>
-  </main>
+  </div>
 
 export default Products

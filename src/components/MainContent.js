@@ -15,9 +15,13 @@ let categoriesItems = [
 ]
 
 const MainWrapper = () =>
-  <div className='main-wrapper container'>
-    <Categories categoriesItems={categoriesItems}/>
-    <Products/>
-  </div>
+  <main className='main-wrapper'>
+    <div className='container'>
+      <div className='main-inner'>
+        <Categories categoriesItems={categoriesItems}/>
+        <Products/>
+      </div>
+    </div>
+  </main>
 
 export default MainWrapper

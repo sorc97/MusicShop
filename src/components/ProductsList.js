@@ -13,13 +13,15 @@ class ProductsList extends Component {
   
   render() {
     const { products } = this.props;
-    console.log(products);
     
     return(
       <div className='products-list-wrapper'>
+        <h1 className='products-mainCategory'>
+          Популярные товары
+        </h1>
         {
           (products.length === 0) ?
-          <p>No products</p> :
+          <p>Loading...</p> :
           <ul className='products-list'>
             {
               products.map(product =>

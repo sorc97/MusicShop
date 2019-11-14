@@ -1,8 +1,13 @@
 import C from './constants'
 
-export const productsFetchDataSuccess = (persons) => ({
+export const productsFetchDataSuccess = (products) => ({
   type: C.PERSONS_FETCH_DATA_SUCCESS,
-  persons
+  products
+})
+
+export const fetchProductByIdSuccess = (product) => ({
+  type: C.FETCH_PRODUCT_BY_ID,
+  product
 })
 
 export const productsFetchData = url => dispatch => {
@@ -15,4 +20,11 @@ export const productsFetchData = url => dispatch => {
     })
     .then(res => res.json())
     .then(products => dispatch(productsFetchDataSuccess(products)))
+}
+
+export const fetchProductById = id => dispatch => {
+  fetch(`/api/products/${id}`)
+    .then(res => res.json())
+    .then(product => dispatch(fetchProductByIdSuccess(product)))
+    .catch(err => console.error(err))
 }

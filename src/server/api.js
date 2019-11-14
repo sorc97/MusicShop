@@ -7,6 +7,11 @@ router.get('/products', (req, res) => {
     .then(products => res.send(products))
 })
 
+router.get('/products/:id', (req, res) => {
+  Product.findById({_id: req.params.id})
+    .then(product => res.send(product))
+})
+
 router.post('/products', (req, res) => {
   Product.create(req.body)  //product creation
     .then(product => res.send(product))

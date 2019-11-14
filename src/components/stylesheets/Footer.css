@@ -1,0 +1,9 @@
+.footer{
+  padding: 20px;
+  background-color: #000;
+}
+
+.footer .logo{
+  display: inline-block;
+  color: white;
+}
