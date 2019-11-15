@@ -4,13 +4,12 @@ import {
   combineReducers
 } from 'redux';
 import thunk from 'redux-thunk';
-import { products, sort } from './reducers';
+import { products } from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(
   combineReducers({
-    products,
-    sort
+    products
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );

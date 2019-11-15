@@ -10,7 +10,7 @@ class Product extends Component {
     return(
       <li className='product'>
         <div className='img-wrapper'>
-          <Link className='img-link' to={`product/${_id}`}>
+          <Link className='img-link' to={`/product/${_id}`}>
             <img src={img} alt='product img'/>
           </Link>
         </div>
@@ -19,7 +19,7 @@ class Product extends Component {
             {category}
           </span>
           <h1 className='product-name'>
-            <Link to={`product/${_id}`}>
+            <Link to={`/product/${_id}`}>
               {name}
             </Link>
           </h1>

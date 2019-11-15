@@ -1,4 +1,7 @@
 .sort{
+  position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
   background-color: #fff;
   height: 50px;
@@ -9,13 +12,38 @@
   display: flex;
   align-items: center;
   height: 100%;
+  flex-grow: 1;
 }
 
 .sort-item{
-  padding: 10px;
+  /* padding: 10px; */
   cursor: pointer;
 }
 
-.sort-item:hover{ 
+.sort-item-link:hover{ 
   text-decoration: underline;
+}
+
+.sort-item-link{
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.sort-item-link.active{
+  text-decoration: underline;
+}
+
+.sort-remove{
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
 }

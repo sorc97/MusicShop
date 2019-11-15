@@ -1,7 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './stylesheets/Sort.css'
 
-const Sort = ({sort, changeSort}) =>
+const Sort = ({sort}) =>
   <div className='sort'>
     <ul className='sort-list'>
       {
@@ -13,15 +14,23 @@ const Sort = ({sort, changeSort}) =>
             <li 
               key={i} 
               className='sort-item'
-              onClick={() => changeSort(sortValue)}
             >
-              {sortName}
+              <NavLink
+                 className='sort-item-link'
+                 to={`/sort/${sortValue}`}
+              >
+                {sortName}
+              </NavLink>
             </li>
           )
-        }
-        )
+        })
       }
     </ul>
+    <span>
+      <NavLink className='sort-remove' to='/'>
+        &times;
+      </NavLink>
+    </span>
   </div>
 
 export default Sort
