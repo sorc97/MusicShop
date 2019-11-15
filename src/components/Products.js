@@ -1,6 +1,4 @@
 import React from 'react'
-import Sort from './Sort'
-import ProductsList from './ProductsList'
 import { 
   ProductsListContainer,
   SortContainer

@@ -14,13 +14,3 @@ export const products = (state = [], action = {}) => {
       return state
   }
 }
-
-export const sort = (state = 'none', action = {}) => {
-  switch(action.type) {
-    case C.CHANGE_SORT:
-      return action.sortValue
-
-    default:
-      return state;
-  }
-}

@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import { 
   productsFetchData, 
-  fetchProductById,
-  changeSort
+  fetchProductById
 } from './actionCreators'
 import { 
   findById,
@@ -11,19 +10,23 @@ import {
 import ProductsList from '../components/ProductsList'
 import ProductInfo from '../components/ProductInfo'
 import Sort from '../components/Sort'
-import {sortList} from '../lib/config'
+import { sortList } from '../lib/config'
+import { withRouter } from 'react-router-dom'
 
 
-export const ProductsListContainer = connect(
-  ({products, sort}) => ({
-    products: sortProducts(products, sort)
-  }),
-  dispatch => ({
-    fetchData(url) {
-      dispatch(productsFetchData(url))
-    }
-  })
-)(ProductsList)
+export const ProductsListContainer = withRouter(
+  connect(
+    ({products}, {match}) => ({
+      products: sortProducts(products, match.params.sortValue)
+    }),
+    dispatch => ({
+      fetchData(url) {
+        dispatch(productsFetchData(url))
+      }
+    })
+  )(ProductsList)
+)
+
 
 export const ProductInfoContainer = connect(
   ({products}, {match}) => {
@@ -42,12 +45,7 @@ export const ProductInfoContainer = connect(
 )(ProductInfo)
 
 export const SortContainer = connect(
-  (state) => ({
+  state => ({
     sort: sortList
-  }),
-  (dispatch) => ({
-    changeSort(sortValue){
-      dispatch(changeSort(sortValue))
-    }
   })
 )(Sort)
