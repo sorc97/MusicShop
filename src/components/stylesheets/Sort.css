@@ -1,21 +1,21 @@
-.filters{
+.sort{
   width: 100%;
   background-color: #fff;
   height: 50px;
   padding: 0px 10px;
 }
 
-.filters-list{
+.sort-list{
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-.filters-item{
+.sort-item{
   padding: 10px;
   cursor: pointer;
 }
 
-.filters-item:hover{ 
+.sort-item:hover{ 
   text-decoration: underline;
 }

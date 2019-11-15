@@ -28,3 +28,8 @@ export const fetchProductById = id => dispatch => {
     .then(product => dispatch(fetchProductByIdSuccess(product)))
     .catch(err => console.error(err))
 }
+
+export const changeSort = (sortValue) => ({
+  type: C.CHANGE_SORT,
+  sortValue
+})

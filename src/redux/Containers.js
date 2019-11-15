@@ -1,13 +1,22 @@
 import { connect } from 'react-redux'
-import { productsFetchData, fetchProductById } from './actionCreators'
-import { findById } from '../lib/array-helpers'
+import { 
+  productsFetchData, 
+  fetchProductById,
+  changeSort
+} from './actionCreators'
+import { 
+  findById,
+  sortProducts
+} from '../lib/array-helpers'
 import ProductsList from '../components/ProductsList'
 import ProductInfo from '../components/ProductInfo'
+import Sort from '../components/Sort'
+import {sortList} from '../lib/config'
 
 
 export const ProductsListContainer = connect(
-  state => ({
-    products: state.products
+  ({products, sort}) => ({
+    products: sortProducts(products, sort)
   }),
   dispatch => ({
     fetchData(url) {
@@ -31,3 +40,14 @@ export const ProductInfoContainer = connect(
     }
   })
 )(ProductInfo)
+
+export const SortContainer = connect(
+  (state) => ({
+    sort: sortList
+  }),
+  (dispatch) => ({
+    changeSort(sortValue){
+      dispatch(changeSort(sortValue))
+    }
+  })
+)(Sort)

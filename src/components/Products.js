@@ -1,18 +1,16 @@
 import React from 'react'
-import Filters from './Filters'
+import Sort from './Sort'
 import ProductsList from './ProductsList'
-import { ProductsListContainer } from '../redux/Containers'
+import { 
+  ProductsListContainer,
+  SortContainer
+} from '../redux/Containers'
 import './stylesheets/Products.css'
 
-const filters = [
-  'По цене',
-  'По дате',
-  'По имени'
-]
 
 const Products = () => 
   <div className='products'>
-    <Filters filters={filters}/>
+    <SortContainer/>
     <ProductsListContainer/>
   </div>
 
