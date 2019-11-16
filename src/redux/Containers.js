@@ -1,23 +1,27 @@
 import { connect } from 'react-redux'
 import { 
   productsFetchData, 
-  fetchProductById
+  fetchProductById,
+  productsFetchDataSuccess
 } from './actionCreators'
 import { 
   findById,
-  sortProducts
+  sortProducts,
+  filterByCategory
 } from '../lib/array-helpers'
 import ProductsList from '../components/ProductsList'
 import ProductInfo from '../components/ProductInfo'
 import Sort from '../components/Sort'
-import { sortList } from '../lib/config'
+import Categories from '../components/Categories'
+import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
 
 
 export const ProductsListContainer = withRouter(
   connect(
     ({products}, {match}) => ({
-      products: sortProducts(products, match.params.sortValue)
+      products: sortProducts(products, match.params.sortValue),
+      category: match.params.category
     }),
     dispatch => ({
       fetchData(url) {
@@ -44,8 +48,22 @@ export const ProductInfoContainer = connect(
   })
 )(ProductInfo)
 
-export const SortContainer = connect(
-  state => ({
-    sort: sortList
+export const SortContainer = withRouter(
+  connect(
+    (state, router) => ({
+      sort: sortList,
+      router
+    })
+  )(Sort)
+)
+
+export const CategoriesContainer = connect(
+  state=> ({
+    categoriesItems: categoriesList
+  }),
+  dispatch => ({
+    fetchData(url) {
+      dispatch(productsFetchData(url))
+    }
   })
-)(Sort)
+)(Categories)

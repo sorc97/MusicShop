@@ -14,14 +14,24 @@
 }
 
 .categories-item{
-  padding: 10px 15px;
-  font-size: 17px;
-  cursor: pointer;
-  transition: all .2s ease;
   border-bottom: 2px solid #efefef;
 }
 
-.categories-item:hover{
+.categories-link{
+  display: inline-block;
+  padding: 10px 15px;
+  color: black;
+  font-size: 17px;
+  width: 100%;
+  transition: all .2s ease;
+}
+
+.categories-link:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+.categories-link.active{
   background-color: #000;
   color: #fff;
 }

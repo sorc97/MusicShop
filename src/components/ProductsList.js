@@ -1,23 +1,34 @@
 import React, { Component } from 'react'
 import Product from './Product'
+import PropTypes from 'prop-types'
 import './stylesheets/ProductsList.css'
   
 
 class ProductsList extends Component {
 
   componentDidMount() {
-    const { fetchData } = this.props;
+    const { fetchData, category } = this.props;
 
+    if(category) {
+      fetchData(`/api/products/category/${encodeURIComponent(category)}`)
+      return;
+    }
+    
     fetchData('/api/products');
+  }
+
+  componentDidUpdate() {
+    const {category} = this.props;
+    console.log(category);
   }
   
   render() {
-    const { products } = this.props;
+    const { products, category } = this.props;
     
     return(
       <div className='products-list-wrapper'>
         <h1 className='products-mainCategory'>
-          Популярные товары
+          { category || 'Все товары' }
         </h1>
         {
           (products.length === 0) ?

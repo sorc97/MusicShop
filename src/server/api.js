@@ -12,6 +12,11 @@ router.get('/products/:id', (req, res) => {
     .then(product => res.send(product))
 })
 
+router.get('/products/category/:category', (req, res) => {
+  Product.find({category: req.params.category})
+    .then(products => res.send(products))
+})
+
 router.post('/products', (req, res) => {
   Product.create(req.body)  //product creation
     .then(product => res.send(product))

@@ -1,9 +1,10 @@
 import React from 'react'
 import Categories from './Categories'
 import Products from './Products'
+import {CategoriesContainer} from '../redux/Containers'
 import './stylesheets/MainContent.css'
 
-let categoriesItems = [
+/* let categoriesItems = [
   'Электронные гитары',
   'Акустические гитары',
   'Бас гитары',
@@ -12,13 +13,13 @@ let categoriesItems = [
   'Микрофоны',
   'Звуковое оборудование',
   'Dj-оборудование'
-]
+] */
 
 const MainWrapper = () =>
   <main className='main-wrapper'>
     <div className='container'>
       <div className='main-inner'>
-        <Categories categoriesItems={categoriesItems}/>
+        <CategoriesContainer />
         <Products/>
       </div>
     </div>

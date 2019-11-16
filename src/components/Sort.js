@@ -27,7 +27,7 @@ const Sort = ({sort}) =>
       }
     </ul>
     <span>
-      <NavLink className='sort-remove' to='/'>
+      <NavLink className='sort-remove' to={`/`}>
         &times;
       </NavLink>
     </span>

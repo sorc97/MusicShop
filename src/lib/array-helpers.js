@@ -41,4 +41,5 @@ export const sortProducts = (products, sortValue) => compose(
   getSortFunction
 )(sortValue)
 
-window.sortProducts = sortProducts;
+export const filterByCategory = (array, category) => 
+  array.filter(item => item.category === category)
