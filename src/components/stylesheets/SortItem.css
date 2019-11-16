@@ -1,0 +1,16 @@
+.sort-item-link:hover{ 
+  text-decoration: underline;
+}
+
+.sort-item-link{
+  padding: 10px;
+  color: black;
+}
+
+.sort-item-link.active{
+  text-decoration: underline;
+}
+
+.sort-item-link.active{
+  text-decoration: underline;
+}

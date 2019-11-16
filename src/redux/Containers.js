@@ -1,13 +1,11 @@
 import { connect } from 'react-redux'
 import { 
   productsFetchData, 
-  fetchProductById,
-  productsFetchDataSuccess
+  fetchProductById
 } from './actionCreators'
 import { 
   findById,
-  sortProducts,
-  filterByCategory
+  sortProducts
 } from '../lib/array-helpers'
 import ProductsList from '../components/ProductsList'
 import ProductInfo from '../components/ProductInfo'
@@ -15,13 +13,15 @@ import Sort from '../components/Sort'
 import Categories from '../components/Categories'
 import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
+import queryString from 'query-string'
 
 
 export const ProductsListContainer = withRouter(
   connect(
     ({products}, {match, location}) => {
       let query = location.search;
-      let sortValue = new URLSearchParams(query).get('sort');
+      let sortValue = queryString.parse(query).sort;
+      // let sortValue = new URLSearchParams(query).get('sort');
 
       return {
         products: sortProducts(products, sortValue),

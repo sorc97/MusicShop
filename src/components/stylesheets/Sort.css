@@ -15,29 +15,6 @@
   flex-grow: 1;
 }
 
-.sort-item{
-  /* padding: 10px; */
-  cursor: pointer;
-}
-
-.sort-item-link:hover{ 
-  text-decoration: underline;
-}
-
-.sort-item-link{
-  padding: 10px;
-  color: black;
-  /* text-decoration: none; */
-}
-
-.sort-item-link.active{
-  text-decoration: underline;
-}
-
-.sort-item-link.active{
-  text-decoration: underline;
-}
-
 .sort-remove{
   background-color: #000;
   display: flex;

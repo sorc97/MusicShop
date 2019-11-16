@@ -1,24 +1,30 @@
 import React from 'react'
 import classNames from 'classnames'
+import {Link} from 'react-router-dom'
+import './stylesheets/SortItem.css'
 
-const SortItem = ({}) => {
+const SortItem = ({
+  match, item, sortValueInURL
+}) => {
+  
   const sortName = Object.keys(item)[0];
   const sortValue = Object.values(item)[0];
   
+  const classes = classNames(
+    'sort-item-link',
+    (sortValue === sortValueInURL) && 'active'
+  )
+
   return(
-    <li 
-      key={i} 
-      className='sort-item'
-    >
-      <span
-        className={(sortValue === sortValueInURL) ? 
-          'sort-item-link active': 
-          'sort-item-link'
-        }
-        onClick={e => clickHandler(e, sortValue) }
+    <li className='sort-item'>
+      <Link 
+        className={classes}
+        to={`${match.url}?sort=${sortValue}`}
       >
         {sortName}
-      </span>
+      </Link>
     </li>
   )
 }
+
+export default SortItem;
