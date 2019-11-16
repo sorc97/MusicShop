@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Product from './Product'
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import './stylesheets/ProductsList.css'
   
 
@@ -23,13 +26,23 @@ class ProductsList extends Component {
   }
   
   render() {
-    const { products, category } = this.props;
+    const { products, category, fetchData } = this.props;
     
     return(
       <div className='products-list-wrapper'>
-        <h1 className='products-mainCategory'>
-          { category || 'Все товары' }
-        </h1>
+        <div className='products-list-caption'>
+          <h1 className='products-mainCategory'>
+            { category || 'Все товары' }
+          </h1>
+          {
+            category &&
+              <span onClick={() => fetchData('/api/products')}>
+                <NavLink to={'/'} className='products-list-goBack'>
+                  <FontAwesomeIcon icon={faLongArrowAltLeft}/>
+                </NavLink>
+              </span>
+          }
+        </div>
         {
           (products.length === 0) ?
           <p>Loading...</p> :

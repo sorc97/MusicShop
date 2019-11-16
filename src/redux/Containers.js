@@ -19,10 +19,15 @@ import { withRouter } from 'react-router-dom'
 
 export const ProductsListContainer = withRouter(
   connect(
-    ({products}, {match}) => ({
-      products: sortProducts(products, match.params.sortValue),
-      category: match.params.category
-    }),
+    ({products}, {match, location}) => {
+      let query = location.search;
+      let sortValue = new URLSearchParams(query).get('sort');
+
+      return {
+        products: sortProducts(products, sortValue),
+        category: match.params.category
+      }
+    },
     dispatch => ({
       fetchData(url) {
         dispatch(productsFetchData(url))
