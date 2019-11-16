@@ -5,7 +5,7 @@ import './stylesheets/Product.css'
 class Product extends Component {
   
   render() {
-    const {name, category, img, price, _id} = this.props; 
+    const {name, category, img, price, _id, onClick} = this.props; 
 
     return(
       <li className='product'>
@@ -15,8 +15,13 @@ class Product extends Component {
           </Link>
         </div>
         <div className='product-caption'>
-          <span className='product-category'>
-            {category}
+          <span 
+            className='product-category'
+            onClick={onClick}
+          >
+            <Link to={`/category/${category}`}>
+              {category}
+            </Link>
           </span>
           <h1 className='product-name'>
             <Link to={`/product/${_id}`}>

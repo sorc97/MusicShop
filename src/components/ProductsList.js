@@ -9,24 +9,37 @@ import './stylesheets/ProductsList.css'
 
 class ProductsList extends Component {
 
+  constructor() {
+    super();
+    this.fetchAllProducts = this.fetchAllProducts.bind(this);
+    this.fetchProductsByCategory = this.fetchProductsByCategory.bind(this);
+  }
+
   componentDidMount() {
-    const { fetchData, category } = this.props;
+    const { category } = this.props;
 
     if(category) {
-      fetchData(`/api/products/category/${encodeURIComponent(category)}`)
+      this.fetchProductsByCategory(category);
       return;
     }
     
+    this.fetchAllProducts();
+  }
+
+  fetchAllProducts() {
+    const { fetchData } = this.props;
+
     fetchData('/api/products');
   }
 
-  componentDidUpdate() {
-    const {category} = this.props;
-    console.log(category);
+  fetchProductsByCategory(category) {
+    const { fetchData } = this.props;
+
+    fetchData(`/api/products/category/${encodeURIComponent(category)}`);
   }
   
   render() {
-    const { products, category, fetchData } = this.props;
+    const { products, category } = this.props;
     
     return(
       <div className='products-list-wrapper'>
@@ -36,7 +49,7 @@ class ProductsList extends Component {
           </h1>
           {
             category &&
-              <span onClick={() => fetchData('/api/products')}>
+              <span onClick={() => this.fetchAllProducts()}>
                 <NavLink to={'/'} className='products-list-goBack'>
                   <FontAwesomeIcon icon={faLongArrowAltLeft}/>
                 </NavLink>
@@ -49,7 +62,12 @@ class ProductsList extends Component {
           <ul className='products-list'>
             {
               products.map(product =>
-                <Product key={product._id} {...product}/>
+                <Product 
+                  key={product._id} 
+                  {...product}
+                  onClick={() => 
+                    this.fetchProductsByCategory(product.category)}
+                />
               )
             }
           </ul>

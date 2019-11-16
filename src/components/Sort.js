@@ -7,19 +7,11 @@ const Sort = ({
   sort, 
   router: {history, match, location}
 }) => {
-  let activeSort = null;
   let query = location.search;
   let sortValueInURL = new URLSearchParams(query).get('sort');
 
-  const clickHandler = (e, sortValue) => {
-    let target = e.target;
-
-    if(activeSort) activeSort.classList.remove('active');
-    
+  const clickHandler = (e, sortValue) => {    
     history.push(`${match.url}?sort=${sortValue}`)
-    
-    activeSort = target;
-    target.classList.add('active')
   }
 
   return (
