@@ -1,9 +1,10 @@
 import React from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import {withRouter} from 'react-router-dom'
 import './stylesheets/Search.css'
 
-const Search = ({fetchData, history}) => {
+const Search = ({history}) => {
   let _searchQuery;
 
   const submit = (e) => {
@@ -12,9 +13,6 @@ const Search = ({fetchData, history}) => {
 
     history.push(`/search/${query}`);
 
-    console.log(query);
-    fetchData(`/api/products/search/${query}`)
-    
     _searchQuery.value = '';
   }
 
@@ -24,6 +22,7 @@ const Search = ({fetchData, history}) => {
         placeholder='Поиск товара' 
         name='query'
         ref={input => _searchQuery = input}
+        required
       />
       <button className='search-button'>
         <FontAwesomeIcon icon={faSearch}/>
@@ -32,4 +31,4 @@ const Search = ({fetchData, history}) => {
   )
 }
 
-export default Search;
+export default withRouter(Search);

@@ -1,6 +1,6 @@
 import React from 'react'
 import Search from './Search'
-import { SearchContainer } from '../redux/Containers';
+// import { SearchContainer } from '../redux/Containers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
@@ -11,7 +11,7 @@ const Header = ({ logo = 'unknown', elementsInCartAmout = 0 }) =>
     <div className='container'>
       <div className='header-inner'>
         <h1 className='logo'>{logo}</h1>
-        <SearchContainer/>
+        <Search/>
         <div className='cart-link-wrapper'>
           <a className='cart-link' href='#'>
             <FontAwesomeIcon icon={faShoppingCart}/>  

@@ -26,7 +26,9 @@ export const ProductsListContainer = withRouter(
       return {
         products: sortProducts(products, sortValue),
         category: match.params.category,
-        location
+        search: match.params.query,
+        location,
+        match
       }
     },
     dispatch => ({
@@ -66,23 +68,5 @@ export const SortContainer = withRouter(
 export const CategoriesContainer = connect(
   state=> ({
     categoriesItems: categoriesList
-  }),
-  dispatch => ({
-    fetchData(url) {
-      dispatch(productsFetchData(url))
-    }
   })
 )(Categories)
-
-export const SearchContainer = withRouter(
-  connect(
-    (state, {history})=> ({
-      history
-    }),
-    dispatch => ({
-      fetchData(url) {
-        dispatch(productsFetchData(url))
-      }
-    })
-  )(Search)
-)
