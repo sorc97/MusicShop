@@ -17,6 +17,21 @@ router.get('/products/category/:category', (req, res) => {
     .then(products => res.send(products))
 })
 
+router.get('/products/search/:query', (req, res) => {
+  let {query} = req.params;
+  // let expQueryForName = new RegExp(query.toUpperCase());
+
+  Product.find({name: new RegExp(query.toUpperCase())})
+    .then(products => {
+      if(products.length) {
+        res.send(products);
+      }else {
+        Product.find({category: new RegExp(query.toLowerCase())})
+          .then(products=> res.send(products))
+      }
+    })
+})
+
 router.post('/products', (req, res) => {
   Product.create(req.body)  //product creation
     .then(product => res.send(product))

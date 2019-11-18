@@ -14,6 +14,7 @@ const App = () =>
       <Route exact path='/' component={MainContent}/>
       <Route path='/sort/:sortValue' component={MainContent}/>
       <Route path='/category/:category' component={MainContent}/>
+      <Route path='/search/:query' component={MainContent}/>
       <Route path='/product/:id' component={ProductInfoContainer}/>
     </Switch> 
     <Footer logo="MusicShop"/>

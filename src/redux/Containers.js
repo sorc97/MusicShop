@@ -11,6 +11,7 @@ import ProductsList from '../components/ProductsList'
 import ProductInfo from '../components/ProductInfo'
 import Sort from '../components/Sort'
 import Categories from '../components/Categories'
+import Search from '../components/Search'
 import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
@@ -21,11 +22,11 @@ export const ProductsListContainer = withRouter(
     ({products}, {match, location}) => {
       let query = location.search;
       let sortValue = queryString.parse(query).sort;
-      // let sortValue = new URLSearchParams(query).get('sort');
 
       return {
         products: sortProducts(products, sortValue),
-        category: match.params.category
+        category: match.params.category,
+        location
       }
     },
     dispatch => ({
@@ -72,3 +73,16 @@ export const CategoriesContainer = connect(
     }
   })
 )(Categories)
+
+export const SearchContainer = withRouter(
+  connect(
+    (state, {history})=> ({
+      history
+    }),
+    dispatch => ({
+      fetchData(url) {
+        dispatch(productsFetchData(url))
+      }
+    })
+  )(Search)
+)

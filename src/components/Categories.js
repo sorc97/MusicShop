@@ -12,7 +12,7 @@ const Categories = ({
     
     if(target.classList.contains('active')) return;
     
-    let encodedCategory = encodeURIComponent(category);
+    let encodedCategory = encodeURIComponent(category.toLowerCase());
     let url = `/api/products/category/${encodedCategory}`;
     
     fetchData(url);
@@ -28,7 +28,7 @@ const Categories = ({
             >
               <NavLink
                 className='categories-link'
-                to={`/category/${encodeURIComponent(category)}`}
+                to={`/category/${encodeURIComponent(category.toLowerCase())}`}
                 onClick={e => clickHandler(e, category)}
               >
                 {category}

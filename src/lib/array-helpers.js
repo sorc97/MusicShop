@@ -43,3 +43,12 @@ export const sortProducts = (products, sortValue) => compose(
 
 export const filterByCategory = (array, category) => 
   array.filter(item => item.category === category)
+
+export const firstLetterToUpperCase = (string) => {
+  let [first, ...rest] = string;
+  let upperFirst = first.toUpperCase();
+
+  return [upperFirst, ...rest].join('');
+}
+
+window.firstLetterToUpperCase = firstLetterToUpperCase;

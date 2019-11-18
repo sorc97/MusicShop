@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { firstLetterToUpperCase } from '../lib/array-helpers'
 import './stylesheets/Product.css'
 
 class Product extends Component {
@@ -19,8 +20,8 @@ class Product extends Component {
             className='product-category'
             onClick={onClick}
           >
-            <Link to={`/category/${category}`}>
-              {category}
+            <Link to={`/category/${category.toLowerCase()}`}>
+              {firstLetterToUpperCase(category)}
             </Link>
           </span>
           <h1 className='product-name'>

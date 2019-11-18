@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Product from './Product'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
+import { firstLetterToUpperCase } from '../lib/array-helpers'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import './stylesheets/ProductsList.css'
@@ -26,6 +27,12 @@ class ProductsList extends Component {
     this.fetchAllProducts();
   }
 
+  componentDidUpdate(props) {
+    const {location} = this.props;
+
+    // console.log('Products list was UPDATE ', props);
+  }
+
   fetchAllProducts() {
     const { fetchData } = this.props;
 
@@ -34,8 +41,9 @@ class ProductsList extends Component {
 
   fetchProductsByCategory(category) {
     const { fetchData } = this.props;
+    let encodedCategory = encodeURIComponent(category.toLowerCase());
 
-    fetchData(`/api/products/category/${encodeURIComponent(category)}`);
+    fetchData(`/api/products/category/${encodedCategory}`);
   }
   
   render() {
@@ -45,7 +53,7 @@ class ProductsList extends Component {
       <div className='products-list-wrapper'>
         <div className='products-list-caption'>
           <h1 className='products-mainCategory'>
-            { category || 'Все товары' }
+            { (category) ? firstLetterToUpperCase(category) : 'Все товары' }
           </h1>
           {
             category &&
