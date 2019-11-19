@@ -28,3 +28,14 @@ export const fetchProductById = id => dispatch => {
     .then(product => dispatch(fetchProductByIdSuccess(product)))
     .catch(err => console.error(err))
 }
+
+export const addToCart = (id) => 
+  (dispatch, getState) => {
+    const {products} = getState();
+
+    dispatch({
+      type: C.ADD_TO_CART,
+      products,
+      id
+    })
+}

@@ -1,21 +1,29 @@
 import { connect } from 'react-redux'
 import { 
   productsFetchData, 
-  fetchProductById
+  fetchProductById,
+  addToCart
 } from './actionCreators'
 import { 
   findById,
   sortProducts
 } from '../lib/array-helpers'
+import Header from '../components/Header'
 import ProductsList from '../components/ProductsList'
 import ProductInfo from '../components/ProductInfo'
 import Sort from '../components/Sort'
 import Categories from '../components/Categories'
-import Search from '../components/Search'
+import Cart from '../components/Cart'
 import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
+export const HeaderContainer = connect(
+  ({cart}) => ({
+    elementsInCartAmout: cart.length,
+    logo: "MusicShop"
+  })
+)(Header)
 
 export const ProductsListContainer = withRouter(
   connect(
@@ -33,7 +41,10 @@ export const ProductsListContainer = withRouter(
     },
     dispatch => ({
       fetchData(url) {
-        dispatch(productsFetchData(url))
+        dispatch(productsFetchData(url));
+      },
+      addProductToCart(id) {
+        dispatch(addToCart(id));
       }
     })
   )(ProductsList)
@@ -70,3 +81,12 @@ export const CategoriesContainer = connect(
     categoriesItems: categoriesList
   })
 )(Categories)
+
+export const CartContainer = connect(
+  state => ({
+    products: state.cart
+  }),
+  dispatch => ({
+
+  })
+)(Cart)

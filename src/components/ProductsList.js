@@ -22,11 +22,11 @@ class ProductsList extends Component {
     const { category, search } = this.props;
 
     switch(true) {
-      case Boolean(category):
+      case !!category:
         this.fetchProductsByCategory(category);
       break;
 
-      case Boolean(search):
+      case !!search:
         this.fetchProductsBySearch(search);
       break;
 
@@ -73,7 +73,6 @@ class ProductsList extends Component {
 
   fetchAllProducts() {
     const { fetchData } = this.props;
-
     fetchData('/api/products');
   }
 
@@ -86,12 +85,11 @@ class ProductsList extends Component {
 
   fetchProductsBySearch(searchQuery) {
     const { fetchData } = this.props;
-
     fetchData(`/api/products/search/${searchQuery}`);
   }
   
   render() {
-    const { products, category, search } = this.props;
+    const { products, category, search, addProductToCart } = this.props;
     
     return(
       <div className='products-list-wrapper'>
@@ -118,6 +116,9 @@ class ProductsList extends Component {
                 <Product 
                   key={product._id} 
                   {...product}
+                  addProductToCart={
+                    () => addProductToCart(product._id)
+                  }
                 />
               )
             }

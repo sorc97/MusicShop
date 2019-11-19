@@ -2,14 +2,18 @@ import React from 'react'
 import Header from './Header'
 import MainContent from './MainContent'
 import Footer from './Footer'
-import {ProductInfoContainer} from '../redux/Containers'
+import { 
+  HeaderContainer,
+  ProductInfoContainer,
+  CartContainer
+} from '../redux/Containers'
 import { Route, Switch } from 'react-router-dom'
 import './stylesheets/App.css'
 
 
 const App = () =>
   <div className='wrapper'>
-    <Header logo='MusicShop'/>
+    <HeaderContainer/>
     <Switch>
       <Route exact path='/' component={MainContent}/>
       <Route path={[
@@ -18,6 +22,7 @@ const App = () =>
         '/search/:query'
       ]} component={MainContent}/>
       <Route path='/product/:id' component={ProductInfoContainer}/>
+      <Route path='/cart' component={CartContainer}/>
     </Switch> 
     <Footer logo="MusicShop"/>
   </div>

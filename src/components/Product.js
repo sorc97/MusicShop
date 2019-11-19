@@ -6,7 +6,14 @@ import './stylesheets/Product.css'
 class Product extends Component {
   
   render() {
-    const {name, category, img, price, _id} = this.props; 
+    const {
+      name, 
+      category, 
+      img, 
+      price, 
+      _id,
+      addProductToCart
+    } = this.props; 
 
     return(
       <li className='product'>
@@ -29,7 +36,10 @@ class Product extends Component {
           </h1>
         </div>
         <h2 className='product-price'>{price} р.</h2>
-        <button className="product-button">
+        <button 
+          className="product-button"
+          onClick={addProductToCart}
+        >
           В корзину
         </button>
       </li>

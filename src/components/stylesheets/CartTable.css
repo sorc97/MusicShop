@@ -1,0 +1,42 @@
+.cart-table{
+  width: 100%; 
+  /* border-collapse: collapse; */
+}
+
+.cart-table th{
+  padding: 15px;
+}
+
+.cart-product td{
+  text-align: center;
+  padding: 5px;
+}
+
+.cart-product-img-wrapper{
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-product{
+  background-color: #fff;
+}
+
+.cart-product-img{
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.cart-product-remove{
+  cursor: pointer;  
+  border: none;
+  padding: 15px;
+  background-color: rgb(239, 239, 239);;
+}
+
+.cart-totalPrice td{
+  padding-right: 20px;
+  background-color: #fff;
+  text-align: right;
+}
