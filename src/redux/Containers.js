@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { 
   productsFetchData, 
   fetchProductById,
-  addToCart
+  addToCart,
+  removeFromCart
 } from './actionCreators'
 import { 
   findById,
@@ -14,25 +15,28 @@ import ProductInfo from '../components/ProductInfo'
 import Sort from '../components/Sort'
 import Categories from '../components/Categories'
 import Cart from '../components/Cart'
+import Product from '../components/Product'
 import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
 export const HeaderContainer = connect(
-  ({cart}) => ({
-    elementsInCartAmout: cart.length,
+  ({ products: { cart } }) => ({
+    elementsInCartAmout: cart.reduce((prev, next) =>
+      prev + next.amount
+    , 0),
     logo: "MusicShop"
   })
 )(Header)
 
 export const ProductsListContainer = withRouter(
   connect(
-    ({products}, {match, location}) => {
+    ({ products: { list } }, { match, location }) => {
       let query = location.search;
       let sortValue = queryString.parse(query).sort;
 
       return {
-        products: sortProducts(products, sortValue),
+        products: sortProducts(list, sortValue),
         category: match.params.category,
         search: match.params.query,
         location,
@@ -42,18 +46,26 @@ export const ProductsListContainer = withRouter(
     dispatch => ({
       fetchData(url) {
         dispatch(productsFetchData(url));
-      },
-      addProductToCart(id) {
-        dispatch(addToCart(id));
       }
     })
   )(ProductsList)
 )
 
+export const ProductContainer = connect(
+  (state, { product }) => ({
+    product
+    // isInCart
+  }),
+  dispatch => ({
+    addProductToCart(id) {
+      dispatch(addToCart(id));
+    }
+  })
+)(Product)
 
 export const ProductInfoContainer = connect(
-  ({products}, {match}) => {
-    let product = findById(products, match.params.id);
+  ({ products: { list }}, {match}) => {
+    let product = findById(list, match.params.id);
 
     return {
       ...product,
@@ -83,10 +95,12 @@ export const CategoriesContainer = connect(
 )(Categories)
 
 export const CartContainer = connect(
-  state => ({
-    products: state.cart
+  ({products}) => ({
+    products: products.cart
   }),
   dispatch => ({
-
+    removeProduct(id) {
+      dispatch(removeFromCart(id));
+    }
   })
 )(Cart)
