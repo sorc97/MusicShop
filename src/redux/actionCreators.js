@@ -29,13 +29,12 @@ export const fetchProductById = id => dispatch => {
     .catch(err => console.error(err))
 }
 
-export const addToCart = (id) => 
-  (dispatch, getState) => {
-    const {products} = getState();
+export const addToCart = (id) => ({
+  type: C.ADD_TO_CART,
+  id
+})
 
-    dispatch({
-      type: C.ADD_TO_CART,
-      products,
-      id
-    })
-}
+export const removeFromCart = (id) => ({
+  type: C.REMOVE_FROM_CART,
+  id
+})

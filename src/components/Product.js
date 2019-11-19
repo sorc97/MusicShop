@@ -11,9 +11,9 @@ class Product extends Component {
       category, 
       img, 
       price, 
-      _id,
-      addProductToCart
-    } = this.props; 
+      _id
+    } = this.props.product; 
+    const {addProductToCart} = this.props;
 
     return(
       <li className='product'>
@@ -38,7 +38,7 @@ class Product extends Component {
         <h2 className='product-price'>{price} р.</h2>
         <button 
           className="product-button"
-          onClick={addProductToCart}
+          onClick={() => addProductToCart(_id)}
         >
           В корзину
         </button>

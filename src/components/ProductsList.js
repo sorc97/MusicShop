@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Product from './Product'
+import { ProductContainer } from '../redux/Containers'
 import PropTypes from 'prop-types'
 import equal from 'deep-equal'
 import { NavLink } from 'react-router-dom'
@@ -113,12 +114,9 @@ class ProductsList extends Component {
           <ul className='products-list'>
             {
               products.map(product =>
-                <Product 
+                <ProductContainer 
                   key={product._id} 
-                  {...product}
-                  addProductToCart={
-                    () => addProductToCart(product._id)
-                  }
+                  product={product}
                 />
               )
             }

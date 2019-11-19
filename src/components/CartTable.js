@@ -1,7 +1,7 @@
 import React from 'react';
 import './stylesheets/CartTable.css'
 
-const CartTable = ({products}) =>
+const CartTable = ({products, removeProduct}) =>
   <table className='cart-table'>
     <tbody>
       <tr>
@@ -12,8 +12,10 @@ const CartTable = ({products}) =>
         <th>Удалить</th>
       </tr>
       {
-        products.map(({_id, img, name, price}, i) => 
-          <tr key={_id + i} className="cart-product">
+        products.map(({
+          _id, img, name, price, amount = 0
+        }) => 
+          <tr key={_id} className="cart-product">
             <td>
               <div className='cart-product-img-wrapper'>
                 <img 
@@ -29,10 +31,13 @@ const CartTable = ({products}) =>
               <h3>{price} р.</h3>
             </td>
             <td>
-              <h3>1</h3>
+              <h3>{amount}</h3>
             </td>
             <td>
-              <button className='cart-product-remove'>
+              <button 
+                className='cart-product-remove'
+                onClick={() => removeProduct(_id)}  
+              >
                 &times;
               </button>
             </td>
@@ -43,7 +48,9 @@ const CartTable = ({products}) =>
         <td colSpan='5'>
           <h3>
             Итоговая цена: {
-              products.reduce((prev, next) => prev + next.price, 0)
+              products.reduce((prev, next) => 
+                prev + next.price * next.amount, 0
+              )
             } р.
           </h3>
         </td>
