@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { firstLetterToUpperCase } from '../lib/array-helpers'
+import { AddToCartButtonContainer } from '../redux/Containers'
 import './stylesheets/Product.css'
 import { removeFromCart } from '../redux/actionCreators';
+
+const buttonStyle = {
+  position: 'absolute',
+  bottom: '0',
+  left: '0',
+  width: '100%'
+}
 
 class Product extends Component {
   
@@ -13,11 +21,7 @@ class Product extends Component {
       img, 
       price, 
       _id,
-      addProductToCart,
-      removeProduct,
-      isInCart
     } = this.props; 
-    // const {addProductToCart, isInCart, removeProduct} = this.props;
 
     return(
       <li className='product'>
@@ -40,27 +44,7 @@ class Product extends Component {
           </h1>
         </div>
         <h2 className='product-price'>{price} р.</h2>
-        {
-          /* (isInCart) ?
-            <button
-              className="product-button remove"
-              onClick={()=> removeProduct(_id)}
-            >
-              Убрать из корзины
-            </button>:
-            <button 
-              className="product-button"
-              onClick={() => addProductToCart(_id)}
-            >
-              В корзину
-            </button> */
-        }
-        <button
-          className='product-button'
-          onClick={() => addProductToCart(_id)}
-        >
-          В корзину {isInCart && `(${isInCart.amount})` }
-        </button>
+        <AddToCartButtonContainer additionStyle={buttonStyle} id={_id}/>
       </li>
     )
   }

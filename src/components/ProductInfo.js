@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { AddToCartButtonContainer } from '../redux/Containers'
 import './stylesheets/ProductInfo.css'
+
+const buttonStyle = {
+  width: '100%'
+}
 
 class ProductInfo extends React.Component {
 
@@ -12,12 +17,12 @@ class ProductInfo extends React.Component {
     if(name === 'unknown') {
       fetchProduct(productId)
     }
-    console.log(isInCart);
   }
   
   render() {
-    // const {product} = this.props;
-    const {name, category, img, price, description} = this.props;
+    const {
+      name, category, img, price, description, productId
+    } = this.props;
     
     return(
       <main className='product-info'>
@@ -35,7 +40,9 @@ class ProductInfo extends React.Component {
             </div>
             <div className='buy-section'>
               <h2>{price} р.</h2>
-              <button>В корзину</button>
+              <AddToCartButtonContainer 
+                additionStyle={buttonStyle}
+                id={productId}/>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Product from './Product'
-import { ProductContainer } from '../redux/Containers'
 import PropTypes from 'prop-types'
 import equal from 'deep-equal'
 import { NavLink } from 'react-router-dom'
@@ -90,7 +89,7 @@ class ProductsList extends Component {
   }
   
   render() {
-    const { products, category, search, addProductToCart } = this.props;
+    const { products, category, search } = this.props;
     
     return(
       <div className='products-list-wrapper'>
@@ -114,9 +113,9 @@ class ProductsList extends Component {
           <ul className='products-list'>
             {
               products.map(product =>
-                <ProductContainer 
+                <Product 
                   key={product._id} 
-                  product={product}
+                  {...product}
                 />
               )
             }

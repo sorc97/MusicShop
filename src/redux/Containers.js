@@ -18,6 +18,7 @@ import Categories from '../components/Categories'
 import Cart from '../components/Cart'
 import CartTable from '../components/CartTable'
 import Product from '../components/Product'
+import AddToCartButton from '../components/AddToCartButton'
 import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
@@ -53,10 +54,11 @@ export const ProductsListContainer = withRouter(
   )(ProductsList)
 )
 
-export const ProductContainer = connect(
-  ({ products: {cart} }, { product }) => ({
-    ...product,
-    isInCart: findById(cart, product._id)
+export const AddToCartButtonContainer = connect(
+  ({ products: {cart} }, {id, additionStyle}) => ({
+    isInCart: findById(cart, id),
+    id,
+    additionStyle
   }),
   dispatch => ({
     addProductToCart(id) {
@@ -66,7 +68,8 @@ export const ProductContainer = connect(
       dispatch(removeFromCart(id));
     }
   })
-)(Product)
+
+)(AddToCartButton)
 
 export const ProductInfoContainer = connect(
   ({ products: { list, cart }}, {match}) => {

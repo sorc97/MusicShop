@@ -1,0 +1,24 @@
+.product-button{
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  background-color: #20a520;
+  outline: 1px solid #20a520;
+}
+
+.product-button:hover{
+  background-color: #20a520d7;
+}
+
+.product-button.remove{
+  background-color: #d71e1e;
+  outline: 1px solid #d71e1e;  
+}
+
+.product-button.inCart{
+  background-color: rgb(45, 104, 231);
+  outline:1px solid rgb(45, 104, 231);
+}

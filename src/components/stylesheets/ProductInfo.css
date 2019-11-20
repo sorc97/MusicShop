@@ -12,7 +12,6 @@
   height: 100%;
   display: flex;
   align-items: center;
-  padding-right: 50px;
   align-self: center;
 }
 
@@ -22,6 +21,7 @@
 
 .about-section{
   flex-grow: 1;
+  padding: 0px 50px;
 }
 
 .about-section-description{

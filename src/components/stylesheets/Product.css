@@ -61,29 +61,6 @@
   color: #929292;
 }
 
-.product-button{
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  border: none;
-  padding: 15px;
-  cursor: pointer;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: bold;
-  background-color: #20a520;
-  outline: 1px solid #20a520;
-}
-
-.product-button:hover{
-  background-color: #20a520d7;
-}
-
-.product-button.remove{
-  background-color: red;
-}
-
 @media screen and (max-width: 1300px) {
   .product{
     margin: 0px 30px 30px 0px;    
