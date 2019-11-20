@@ -3,7 +3,8 @@ import {
   productsFetchData, 
   fetchProductById,
   addToCart,
-  removeFromCart
+  removeFromCart,
+  changeAmount
 } from './actionCreators'
 import { 
   findById,
@@ -15,6 +16,7 @@ import ProductInfo from '../components/ProductInfo'
 import Sort from '../components/Sort'
 import Categories from '../components/Categories'
 import Cart from '../components/Cart'
+import CartTable from '../components/CartTable'
 import Product from '../components/Product'
 import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
@@ -52,29 +54,37 @@ export const ProductsListContainer = withRouter(
 )
 
 export const ProductContainer = connect(
-  (state, { product }) => ({
-    product
-    // isInCart
+  ({ products: {cart} }, { product }) => ({
+    ...product,
+    isInCart: findById(cart, product._id)
   }),
   dispatch => ({
     addProductToCart(id) {
       dispatch(addToCart(id));
+    },
+    removeProduct(id){
+      dispatch(removeFromCart(id));
     }
   })
 )(Product)
 
 export const ProductInfoContainer = connect(
-  ({ products: { list }}, {match}) => {
+  ({ products: { list, cart }}, {match}) => {
     let product = findById(list, match.params.id);
+    let isInCart = !!findById(cart, match.params.id);
 
     return {
       ...product,
-      productId: match.params.id
+      productId: match.params.id,
+      isInCart
     }
   },
   dispatch => ({
     fetchProduct(url) {
       dispatch(fetchProductById(url))
+    },
+    addProductToCart(id) {
+      dispatch(addToCart(id));
     }
   })
 )(ProductInfo)
@@ -97,10 +107,19 @@ export const CategoriesContainer = connect(
 export const CartContainer = connect(
   ({products}) => ({
     products: products.cart
+  })
+)(Cart)
+
+export const CartTableContainer = connect(
+  ({ products: {cart} }) => ({
+    products: cart
   }),
   dispatch => ({
     removeProduct(id) {
       dispatch(removeFromCart(id));
+    },
+    changeCartProductAmount(id, operator) {
+      dispatch(changeAmount(id, operator))
     }
   })
-)(Cart)
+)(CartTable)

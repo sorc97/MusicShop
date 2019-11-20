@@ -1,7 +1,7 @@
 import C from './constants'
 
 export const productsFetchDataSuccess = (products) => ({
-  type: C.PERSONS_FETCH_DATA_SUCCESS,
+  type: C.PRODUCTS_FETCH_DATA_SUCCESS,
   products
 })
 
@@ -37,4 +37,10 @@ export const addToCart = (id) => ({
 export const removeFromCart = (id) => ({
   type: C.REMOVE_FROM_CART,
   id
+})
+
+export const changeAmount = (id, operator) => ({
+  type: C.CHANGE_AMOUNT,
+  id,
+  operator
 })

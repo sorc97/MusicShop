@@ -1,7 +1,10 @@
 import React from 'react';
+import Counter from './Counter'
 import './stylesheets/CartTable.css'
 
-const CartTable = ({products, removeProduct}) =>
+const CartTable = ({
+  products, removeProduct, changeCartProductAmount
+}) =>
   <table className='cart-table'>
     <tbody>
       <tr>
@@ -31,7 +34,10 @@ const CartTable = ({products, removeProduct}) =>
               <h3>{price} р.</h3>
             </td>
             <td>
-              <h3>{amount}</h3>
+              <Counter 
+                countUp={() => changeCartProductAmount(_id, '+')}
+                countDown={() => changeCartProductAmount(_id, '-')}
+                currentAmount={amount} />
             </td>
             <td>
               <button 

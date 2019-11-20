@@ -1,18 +1,16 @@
 import React from 'react';
-import CartTable from '../components/CartTable'
+import { CartTableContainer } from '../redux/Containers'
+// import CartTable from '../components/CartTable'
 import './stylesheets/Cart.css';
 
-const Cart = ({products, removeProduct}) =>
+const Cart = ({products}) =>
   <main className='cart'>
     <div className='container'>
       <div className='cart-inner'>
         {
           (!products.length) ? 
           <h1>В корзине пусто</h1>:
-          <CartTable 
-            products={products}
-            removeProduct={removeProduct}
-          />
+          <CartTableContainer /> 
         }
       </div>
     </div>

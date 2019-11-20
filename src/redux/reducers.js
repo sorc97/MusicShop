@@ -10,6 +10,20 @@ export const product = (state = {}, action = {}) => {
         ...state,
         amount: 1
       }
+
+    case C.CHANGE_AMOUNT: {
+      let methods = {
+        "+": a => a + 1,
+        "-": a => a - 1
+      }
+
+      return (state._id !== action.id) ?
+        state:
+        {
+          ...state,
+          amount: methods[action.operator](state.amount)
+        }
+    }
       
     default:
       return state;
@@ -26,7 +40,7 @@ export const products = (
   let { cart, list } = state;
 
   switch(action.type) {
-    case C.PERSONS_FETCH_DATA_SUCCESS:
+    case C.PRODUCTS_FETCH_DATA_SUCCESS:
       return {
         ...state,
         list: action.products
@@ -35,7 +49,9 @@ export const products = (
     case C.FETCH_PRODUCT_BY_ID:
       return {
         ...state,
-        list: action.product
+        list: [
+          action.product
+        ]
       }
 
     case C.ADD_TO_CART: {
@@ -67,6 +83,12 @@ export const products = (
       return {
         ...state,
         cart: cart.filter(item => item._id !== action.id)
+      }
+
+    case C.CHANGE_AMOUNT:
+      return {
+        ...state,
+        cart: cart.map(item => product(item, action))
       }
 
     default:

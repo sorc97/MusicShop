@@ -80,6 +80,10 @@
   background-color: #20a520d7;
 }
 
+.product-button.remove{
+  background-color: red;
+}
+
 @media screen and (max-width: 1300px) {
   .product{
     margin: 0px 30px 30px 0px;    

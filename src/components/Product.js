@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { firstLetterToUpperCase } from '../lib/array-helpers'
 import './stylesheets/Product.css'
+import { removeFromCart } from '../redux/actionCreators';
 
 class Product extends Component {
   
@@ -11,9 +12,12 @@ class Product extends Component {
       category, 
       img, 
       price, 
-      _id
-    } = this.props.product; 
-    const {addProductToCart} = this.props;
+      _id,
+      addProductToCart,
+      removeProduct,
+      isInCart
+    } = this.props; 
+    // const {addProductToCart, isInCart, removeProduct} = this.props;
 
     return(
       <li className='product'>
@@ -36,11 +40,26 @@ class Product extends Component {
           </h1>
         </div>
         <h2 className='product-price'>{price} р.</h2>
-        <button 
-          className="product-button"
+        {
+          /* (isInCart) ?
+            <button
+              className="product-button remove"
+              onClick={()=> removeProduct(_id)}
+            >
+              Убрать из корзины
+            </button>:
+            <button 
+              className="product-button"
+              onClick={() => addProductToCart(_id)}
+            >
+              В корзину
+            </button> */
+        }
+        <button
+          className='product-button'
           onClick={() => addProductToCart(_id)}
         >
-          В корзину
+          В корзину {isInCart && `(${isInCart.amount})` }
         </button>
       </li>
     )

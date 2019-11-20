@@ -50,5 +50,3 @@ export const firstLetterToUpperCase = (string) => {
 
   return [upperFirst, ...rest].join('');
 }
-
-window.firstLetterToUpperCase = firstLetterToUpperCase;

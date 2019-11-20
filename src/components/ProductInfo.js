@@ -5,11 +5,14 @@ import './stylesheets/ProductInfo.css'
 class ProductInfo extends React.Component {
 
   componentDidMount() {
-    const {name, fetchProduct, productId} = this.props;
+    const {
+      name, fetchProduct, productId, isInCart
+    } = this.props;
     console.log(name);
     if(name === 'unknown') {
       fetchProduct(productId)
     }
+    console.log(isInCart);
   }
   
   render() {
