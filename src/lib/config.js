@@ -15,7 +15,12 @@ export const categoriesList = [
   'Dj-оборудование'
 ]
 
-export const initialCart = [
+export const initialCart = 
+  (localStorage['musicShop-cart']) ?
+    JSON.parse(localStorage['musicShop-cart']) :
+    []
+
+/* export const initialCart = [
   {
     category: "электрогитары",
     img: "https://www.muztorg.ru/files/4q1/l02/q4u/oao/o80/o0k/8c0/g80/4/4q1l02q4uoaoo80o0k8c0g804.jpg",
@@ -40,4 +45,4 @@ export const initialCart = [
     amount: 5,
     _id: "5dcd2940d5ca63b2556a0db5"
   }
-]
+] */

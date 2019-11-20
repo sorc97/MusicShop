@@ -15,5 +15,10 @@ const store = createStore(
 );
 
 store.subscribe(() => console.log(store.getState()));
+store.subscribe(() =>
+  localStorage['musicShop-cart'] = JSON.stringify(
+    store.getState().products.cart
+  )
+)
 
 export default store;
