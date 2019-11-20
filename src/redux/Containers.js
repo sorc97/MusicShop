@@ -63,9 +63,6 @@ export const AddToCartButtonContainer = connect(
   dispatch => ({
     addProductToCart(id) {
       dispatch(addToCart(id));
-    },
-    removeProduct(id){
-      dispatch(removeFromCart(id));
     }
   })
 

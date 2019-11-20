@@ -1,34 +1,24 @@
 import React from 'react';
+import classNames from 'classnames'
 import './stylesheets/AddToCartButton.css'
 
 const AddToCartButton = ({
-  addProductToCart, isInCart, id, removeProduct, additionStyle
+  addProductToCart, isInCart, id, additionStyle
 }) => {
 
+  const classes = classNames(
+    'product-button',
+    isInCart && 'inCart'
+  )
+
   return(
-    /* <button
-      className={(!isInCart) ? 'product-button': 'product-button inCart'}
+    <button
+      className={classes}
       onClick={() => addProductToCart(id)}
       style={additionStyle}
     >
       В корзину {isInCart && `(${isInCart.amount})` }
-    </button> */
-
-    (isInCart) ?
-      <button
-        className="product-button remove"
-        onClick={()=> removeProduct(id)}
-        style={additionStyle}
-      >
-        Убрать из корзины
-      </button>:
-      <button 
-        className="product-button"
-        onClick={() => addProductToCart(id)}
-        style={additionStyle}
-      >
-        Добавить в корзину
-      </button>
+    </button>
   )
 }
 
