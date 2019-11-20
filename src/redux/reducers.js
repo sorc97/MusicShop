@@ -1,5 +1,4 @@
 import C from './constants'
-import equal from 'deep-equal'
 import { initialCart } from '../lib/config'
 
 export const product = (state = {}, action = {}) => {
@@ -59,23 +58,12 @@ export const products = (
         item._id === action.id
       )[0]
 
-      let newCartList = cart.map(item =>
-        (item._id !== action.id) ? 
-          item :
-          {
-            ...item,
-            amount: item.amount + 1
-          }
-      )
-
       return {
         ...state,
-        cart: (!equal(state.cart, newCartList)) ? 
-          newCartList: 
-          [
-            ...state.cart, 
-            product(newProduct, action)
-          ]
+        cart: [
+          ...cart,
+          product(newProduct, action)
+        ]
       }
     }
 
