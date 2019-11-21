@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Product from './Product'
+import { PaginationContainer } from '../redux/Containers'
 import PropTypes from 'prop-types'
 import equal from 'deep-equal'
 import { NavLink } from 'react-router-dom'
@@ -89,7 +90,7 @@ class ProductsList extends Component {
   }
   
   render() {
-    const { products, category, search } = this.props;
+    const { products, category, search, query } = this.props;
     
     return(
       <div className='products-list-wrapper'>
@@ -121,6 +122,7 @@ class ProductsList extends Component {
             }
           </ul>
         }
+        <PaginationContainer query={query}/>
       </div>
     )
   }

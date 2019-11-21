@@ -1,14 +1,17 @@
 import React from 'react'
 import classNames from 'classnames'
 import {Link} from 'react-router-dom'
+import { makeUrlQuery } from '../lib/array-helpers'
+import queryString from 'query-string'
 import './stylesheets/SortItem.css'
 
 const SortItem = ({
-  match, item, sortValueInURL
+  query, item
 }) => {
   
   const sortName = Object.keys(item)[0];
   const sortValue = Object.values(item)[0];
+  let sortValueInURL = queryString.parse(query).sort;
   
   const classes = classNames(
     'sort-item-link',
@@ -19,7 +22,7 @@ const SortItem = ({
     <li className='sort-item'>
       <Link 
         className={classes}
-        to={`${match.url}?sort=${sortValue}`}
+        to={makeUrlQuery('sort', sortValue, query)}
       >
         {sortName}
       </Link>

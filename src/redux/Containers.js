@@ -8,7 +8,8 @@ import {
 } from './actionCreators'
 import { 
   findById,
-  sortProducts
+  sortProducts,
+  getElementsFromArrayByInterval
 } from '../lib/array-helpers'
 import Header from '../components/Header'
 import ProductsList from '../components/ProductsList'
@@ -17,7 +18,7 @@ import Sort from '../components/Sort'
 import Categories from '../components/Categories'
 import Cart from '../components/Cart'
 import CartTable from '../components/CartTable'
-import Product from '../components/Product'
+import Pagination from '../components/Pagination'
 import AddToCartButton from '../components/AddToCartButton'
 import { sortList, categoriesList } from '../lib/config'
 import { withRouter } from 'react-router-dom'
@@ -34,16 +35,29 @@ export const HeaderContainer = connect(
 
 export const ProductsListContainer = withRouter(
   connect(
-    ({ products: { list } }, { match, location }) => {
-      let query = location.search;
-      let sortValue = queryString.parse(query).sort;
+    (
+      { products: { list, productsPerPage } }, 
+      { match, location }
+    ) => {
+      //Query Params
+      let query = queryString.parse(location.search);
+      let sortValue = query.sort;
+      const currentPage = query.page || 1;
+
+      //Pagination
+      const lastElement = productsPerPage * currentPage - 1;
+      const firstElement = lastElement - productsPerPage + 1;
+
+      const currentProducts = getElementsFromArrayByInterval(
+        list, firstElement, lastElement
+      )
 
       return {
-        products: sortProducts(list, sortValue),
+        products: sortProducts(currentProducts, sortValue),
         category: match.params.category,
         search: match.params.query,
         location,
-        match
+        query
       }
     },
     dispatch => ({
@@ -94,9 +108,8 @@ export const ProductInfoContainer = connect(
 
 export const SortContainer = withRouter(
   connect(
-    (state, router) => ({
-      sort: sortList,
-      router
+    (state) => ({
+      sort: sortList
     })
   )(Sort)
 )
@@ -126,3 +139,13 @@ export const CartTableContainer = connect(
     }
   })
 )(CartTable)
+
+export const PaginationContainer = withRouter( 
+  connect(
+    ({ products: {list, productsPerPage} }, { query }) => ({
+      allElements: list,
+      elemPerPage: productsPerPage,
+      query
+    })
+  )(Pagination)
+)

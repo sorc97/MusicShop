@@ -1,5 +1,8 @@
 import C from './constants'
-import { initialCart } from '../lib/config'
+import { 
+  initialCart, 
+  initialProductsPerPage 
+} from '../lib/config'
 
 export const product = (state = {}, action = {}) => {
 
@@ -32,7 +35,8 @@ export const product = (state = {}, action = {}) => {
 export const products = (
   state = {
     list: [],
-    cart: initialCart
+    cart: initialCart,
+    productsPerPage: initialProductsPerPage
   }, 
   action = {}
 ) => {
@@ -83,3 +87,14 @@ export const products = (
       return state
   }
 }
+
+/* export const productsPerPage = (
+  state = initialProductsPerPage, action
+) => {
+
+  switch(action.type) {
+    
+    default:
+      return state;
+  }
+} */

@@ -1,17 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import queryString from 'query-string'
 import SortItem from './SortItem'
+import { removeFromUrlQuery } from '../lib/array-helpers'
 import './stylesheets/Sort.css'
 
 const Sort = ({
   sort, 
-  router: {match, location}
+  location
 }) => {
 
   let query = location.search;
-  let sortValueInURL = queryString.parse(query).sort;
-  
+  // let sortValueInURL = queryString.parse(query).sort;
+
   return (
     <div className='sort'>
       <ul className='sort-list'>
@@ -20,16 +20,18 @@ const Sort = ({
             <SortItem 
               key={i}
               item={item} 
-              sortValueInURL={sortValueInURL} 
-              match={match}
+              query={query}
             />
           )
         }
       </ul>
       <span>
         {
-          (location.search) &&
-            <NavLink className='sort-remove' to={`${match.url}`}>
+          (query.includes('sort')) &&
+            <NavLink 
+              className='sort-remove' 
+              to={removeFromUrlQuery('sort', query)}
+            >
               &times;
             </NavLink>
         }

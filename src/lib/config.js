@@ -20,6 +20,8 @@ export const initialCart =
     JSON.parse(localStorage['musicShop-cart']) :
     []
 
+export const initialProductsPerPage = 3;
+
 /* export const initialCart = [
   {
     category: "электрогитары",

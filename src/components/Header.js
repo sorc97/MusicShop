@@ -11,7 +11,9 @@ const Header = ({ logo = 'unknown', elementsInCartAmout = 0 }) =>
   <header className='header'>
     <div className='container'>
       <div className='header-inner'>
-        <h1 className='logo'>{logo}</h1>
+        <Link to='/' className='logo'>
+          {logo}
+        </Link>
         <Search/>
         <Link to='/cart' className='cart-link'>
           <FontAwesomeIcon icon={faShoppingCart}/>  

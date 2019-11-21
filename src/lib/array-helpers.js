@@ -50,3 +50,28 @@ export const firstLetterToUpperCase = (string) => {
 
   return [upperFirst, ...rest].join('');
 }
+
+export const getElementsFromArrayByInterval = (array, first, last) =>
+  array.filter((item, i) => (i >= first && i <= last))
+
+export const makeSearchParam = (init) =>
+  new URLSearchParams(init)
+  
+export const makeUrlQuery = (name, value, currentQuery) => {
+  let query = makeSearchParam(currentQuery);
+
+  if(query.get(name)) {
+    query.set(name, value);
+  }else {
+    query.append(name, value);
+  }  
+  return `?${query.toString()}`;
+}
+
+export const removeFromUrlQuery = (target, currentQuery) => {
+  let query = makeSearchParam(currentQuery);
+  query.delete(target);
+  return `?${query.toString()}`
+}
+
+window.getElementsFromArrayByInterval = getElementsFromArrayByInterval;
