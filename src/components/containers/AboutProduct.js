@@ -1,5 +1,9 @@
 import { connect } from 'react-redux'
 import { findById } from '../../lib/array-helpers';
+import {
+  fetchProductById,
+  addToCart
+} from '../../redux/actionCreators'
 import ProductInfo from '../ProductInfo';
 
 const mapStateToProps = (
