@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Product from './Product'
-import { PaginationContainer } from '../redux/Containers'
+import PaginationContainer from './containers/PaginationContainer'
 import PropTypes from 'prop-types'
 import equal from 'deep-equal'
 import { NavLink } from 'react-router-dom'

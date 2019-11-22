@@ -13,6 +13,11 @@
   justify-content: space-between;
 }
 
+/* .products-list::after{
+  content: '';
+  flex: auto;
+} */
+
 .products-list-caption{
   display: flex;
   margin-bottom: 30px;

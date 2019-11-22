@@ -1,12 +1,9 @@
 import React from 'react'
-import Header from './Header'
+import HeaderContainer from './containers/HeaderContainer'
 import MainContent from './MainContent'
 import Footer from './Footer'
-import { 
-  HeaderContainer,
-  ProductInfoContainer,
-  CartContainer
-} from '../redux/Containers'
+import AboutProduct from './containers/AboutProduct'
+import CartContainer from './containers/CartContainer'
 import { Route, Switch } from 'react-router-dom'
 import './stylesheets/App.css'
 
@@ -21,7 +18,7 @@ const App = () =>
         '/category/:category',
         '/search/:query'
       ]} component={MainContent}/>
-      <Route path='/product/:id' component={ProductInfoContainer}/>
+      <Route path='/product/:id' component={AboutProduct}/>
       <Route path='/cart' component={CartContainer}/>
     </Switch> 
     <Footer logo="MusicShop"/>

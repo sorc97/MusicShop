@@ -1,3 +1,5 @@
+export const logo = 'MusicShop';
+
 export const sortList = [
   {'По возрастанию цены': 'BY_LOW_PRICE'},
   {'По убыванию цены': 'BY_HIGH_PRICE'},
@@ -20,7 +22,8 @@ export const initialCart =
     JSON.parse(localStorage['musicShop-cart']) :
     []
 
-export const initialProductsPerPage = 3;
+export const initialProductsPerPage = 6;
+
 
 /* export const initialCart = [
   {

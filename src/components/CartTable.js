@@ -3,7 +3,7 @@ import Counter from './Counter'
 import './stylesheets/CartTable.css'
 
 const CartTable = ({
-  products, removeProduct, changeCartProductAmount
+  products, removeProduct, changeAmount
 }) =>
   <table className='cart-table'>
     <tbody>
@@ -35,8 +35,8 @@ const CartTable = ({
             </td>
             <td>
               <Counter 
-                countUp={() => changeCartProductAmount(_id, '+')}
-                countDown={() => changeCartProductAmount(_id, '-')}
+                countUp={() => changeAmount(_id, '+')}
+                countDown={() => changeAmount(_id, '-')}
                 currentAmount={amount} />
             </td>
             <td>

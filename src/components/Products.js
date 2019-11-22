@@ -1,15 +1,14 @@
 import React from 'react'
-import { 
-  ProductsListContainer,
-  SortContainer
-} from '../redux/Containers'
+import Sort from './Sort'
+import VisibleProducts from './containers/VisibleProducts'
+import { sortList } from '../lib/config'
 import './stylesheets/Products.css'
 
 
 const Products = () => 
   <div className='products'>
-    <SortContainer/>
-    <ProductsListContainer/>
+    <Sort sortList={sortList}/>
+    <VisibleProducts/>
   </div>
 
 export default Products

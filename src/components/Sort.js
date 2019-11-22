@@ -1,22 +1,22 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import SortItem from './SortItem'
+import { withRouter } from 'react-router-dom'
 import { removeFromUrlQuery } from '../lib/array-helpers'
 import './stylesheets/Sort.css'
 
 const Sort = ({
-  sort, 
+  sortList, 
   location
 }) => {
 
   let query = location.search;
-  // let sortValueInURL = queryString.parse(query).sort;
 
   return (
     <div className='sort'>
       <ul className='sort-list'>
         {
-          sort.map((item, i) => 
+          sortList.map((item, i) => 
             <SortItem 
               key={i}
               item={item} 
@@ -40,4 +40,4 @@ const Sort = ({
   )
 }
 
-export default Sort;
+export default withRouter(Sort);

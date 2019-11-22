@@ -4,12 +4,12 @@ import { NavLink, } from 'react-router-dom'
 import './stylesheets/Categories.css'
 
 const Categories = ({
-  categoriesItems = []
+  categoriesList = []
 }) =>
   <aside className='categories'>
     <ul className='categories-list'>
       {
-        categoriesItems.map((category, i) => 
+        categoriesList.map((category, i) => 
           <li key={i} 
             className='categories-item'
           >

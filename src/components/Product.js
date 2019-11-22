@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { firstLetterToUpperCase } from '../lib/array-helpers'
-import { AddToCartButtonContainer } from '../redux/Containers'
+import  AddToCartButton from './containers/AddToCartButton'
 import './stylesheets/Product.css'
-import { removeFromCart } from '../redux/actionCreators';
 
 const buttonStyle = {
   position: 'absolute',
@@ -44,7 +43,10 @@ class Product extends Component {
           </h1>
         </div>
         <h2 className='product-price'>{price} р.</h2>
-        <AddToCartButtonContainer additionStyle={buttonStyle} id={_id}/>
+        <AddToCartButton 
+          style={buttonStyle} 
+          id={_id}
+          className='product-button'/>
       </li>
     )
   }

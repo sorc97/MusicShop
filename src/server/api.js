@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Product = require('./product')
 
+// GET
 router.get('/products', (req, res) => {
   Product.find({})  //find product
     .then(products => res.send(products))
@@ -32,12 +33,14 @@ router.get('/products/search/:query', (req, res) => {
     })
 })
 
+// POST
 router.post('/products', (req, res) => {
   Product.create(req.body)  //product creation
     .then(product => res.send(product))
     .catch(err => console.err(`${err} was occurred`))
 })
 
+// PUT
 router.put('/products/:id', (req, res) => {
   Product.findByIdAndUpdate({_id: req.params.id}, req.body) //product updating
     .then(() => 
@@ -46,6 +49,7 @@ router.put('/products/:id', (req, res) => {
     .then(product => res.send(product))
 })
 
+// DELETE
 router.delete('/products/:id', (req, res) => {
   Product.deleteOne({_id: req.params.id}) //product removing
     .then(removedProduct => res.send(removedProduct))

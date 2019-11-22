@@ -39,7 +39,7 @@ export const removeFromCart = (id) => ({
   id
 })
 
-export const changeAmount = (id, operator) => ({
+export const changeCartProductAmount = (id, operator) => ({
   type: C.CHANGE_AMOUNT,
   id,
   operator
