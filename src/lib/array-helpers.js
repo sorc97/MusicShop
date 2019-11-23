@@ -74,5 +74,20 @@ export const removeFromUrlQuery = (target, currentQuery) => {
   return `?${query.toString()}`
 }
 
+export const searchByField = (array, field, query) => 
+  array.filter(item => 
+    item[field].toLowerCase().includes(query.toLowerCase())
+  );
 
-window.getElementsFromArrayByInterval = getElementsFromArrayByInterval;
+export const searchByMultipleFields = (array, fields, query) => {
+  let arrayOfFields = fields.split(' ');
+
+  return arrayOfFields.reduce((prev, current) => {  
+    if(prev.length > 0) return prev;
+    
+    return searchByField(array, current, query);
+  }, [])
+}
+
+window.searchByMultipleFields = searchByMultipleFields;
+window.searchByField = searchByField;

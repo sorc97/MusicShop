@@ -13,7 +13,7 @@ const App = () =>
       <Route path={[
         '/sort/:sortValue',
         '/category/:category',
-        '/search/:query'
+        '/search/:search'
       ]} component={ProductsSection}/>
       <Route path='/product/:id' component={AboutProduct}/>
       <Route path='/cart' component={CartContainer}/>

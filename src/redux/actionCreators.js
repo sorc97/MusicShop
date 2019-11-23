@@ -1,57 +1,38 @@
 import C from './constants'
 
-export const productsFetchDataSuccess = (products) => ({
-  type: C.PRODUCTS_FETCH_DATA_SUCCESS,
-  products
-})
-
-export const fetchProductByIdSuccess = (product) => ({
-  type: C.FETCH_PRODUCT_BY_ID,
-  product
-})
-/* 
-export const requestPosts = () => ({
-  type: C.REQUEST_POSTS
+export const requestProducts = () => ({
+  type: C.REQUEST_PRODUCTS
 }) 
-*/
 
-export const productsFetchData = url => dispatch => {
+export const receiveProducts = (products, isMain) => ({
+  type: C.RECEIVE_PRODUCTS,
+  products,
+  isMain
+})
+
+export const fetchProducts = (url, isMain) => dispatch => {
   console.log("Preparing to fentch ....");
-  dispatch({
-    type: C.REQUEST_POSTS
-  })
+
+  dispatch(requestProducts());
 
   fetch(url)
-    .then(res => {
-      if(!res.ok) {
-        throw new Error(res.statusText)
-      }
-      return res
-    })
-    .then(res => res.json())
-    .then(products => dispatch(productsFetchDataSuccess(products)))
+    .then(
+      res => res.json(),
+      err => console.error('An error occurred ', err)
+    )
+    .then(products => dispatch(receiveProducts(products, isMain)))
+}
+
+export const fetchAllProducts = () => dispatch => {
+  return dispatch(fetchProducts(`/api/products`, true));
 }
 
 export const fetchProductsByParam = (path, param) => dispatch => {
-  fetch(`/api/products/${path}/${param}`)
-    .then(
-      res => res.json(),
-      err => console.error('An error occurred')
-    )
-    .then(products => dispatch({
-      type: C.FETCH_PRODUCTS_BY_PARAM,
-      products
-    }))
+  return dispatch(fetchProducts(`/api/products/${path}/${param}`))
 }
 
 export const fetchProductById = id => dispatch => {
-  fetch(`/api/products/${id}`)
-    .then(
-      res => res.json(),
-      err => console.error('An error occurred', err)
-    )
-    .then(product => dispatch(fetchProductByIdSuccess(product)))
-    // .catch(err => console.error(err))
+  return dispatch(fetchProducts(`/api/products/${id}`))
 }
 
 export const addToCart = (id) => ({

@@ -1,58 +1,64 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { 
-  productsFetchData,
+  fetchAllProducts,
   fetchProductsByParam
 } from '../../redux/actionCreators'
 import { 
-  sortProducts, getElementsFromArrayByInterval, filterProducts
+  sortProducts, 
+  getElementsFromArrayByInterval, 
+  filterProducts, 
+  searchByMultipleFields
 } from '../../lib/array-helpers'
 import queryString from 'query-string'
 import ProductsList from '../ProductsList'
 
 const mapStateToProps = (
-  { products: { 
-    list, 
-    productsPerPage, 
-    isFetching, 
-    isMainDataFetched,
-   } 
-  },
-  { match: { params }, location }
+  { products: { list, productsPerPage, isFetching, isMainDataFetched } } ,
+  { match: { params: {category, search}, params }, location }
 ) => {
   //Query Params
   let query = queryString.parse(location.search);
   let sortValue = query.sort;
   const currentPage = query.page || 1;
-  let category = params.category;
 
   //Pagination
   const lastElement = productsPerPage * currentPage - 1;
   const firstElement = lastElement - productsPerPage + 1;
 
+  //Filter by category
   if(category && isMainDataFetched) {
-    list = filterProducts(list, 'category', category);
-    console.log(category);
+    list = filterProducts(list, 'category', category)
   }
   
+  //Elements searching
+  if(search && isMainDataFetched) {
+    list = searchByMultipleFields(list, 'name category', search)
+    console.log('SEARCH', list);
+  }
+  
+  //Filter elements to pagination
   let currentProducts = getElementsFromArrayByInterval(
     list, firstElement, lastElement
   )
+  
   console.log(list);
+  
   return {
     products: sortProducts(currentProducts, sortValue),
-    category: params.category,
-    search: params.query,
+    category,
+    search,
     location,
     query,
     isFetching,
-    isMainDataFetched
+    isMainDataFetched,
+    params
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchData(url) {
-    dispatch(productsFetchData(url));
+  fetchData() {
+    dispatch(fetchAllProducts());
   },
   fetchByParam(path, category) {
     dispatch(fetchProductsByParam(path, category))

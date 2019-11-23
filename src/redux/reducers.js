@@ -45,33 +45,27 @@ export const products = (
   let { cart, list } = state;
 
   switch(action.type) {
-    case C.REQUEST_POSTS:
+    case C.REQUEST_PRODUCTS:
       return {
         ...state,
         isFetching: true
       }
 
-    case C.PRODUCTS_FETCH_DATA_SUCCESS:
+    case C.RECEIVE_PRODUCTS:
+      console.log(!!action.isMain);
       return {
         ...state,
-        list: action.products,
+        list: Array.isArray(action.products) ?
+          action.products : [action.products],
         isFetching: false,
+        isMainDataFetched: !!action.isMain
+      }
+    
+    case C.FETCH_ALL_PRODUCTS:
+      console.log('HI')
+      return {
+        ...state,
         isMainDataFetched: true
-      }
-
-    case C.FETCH_PRODUCT_BY_ID:
-      return {
-        ...state,
-        list: [
-          action.product
-        ]
-      }
-
-    case C.FETCH_PRODUCTS_BY_PARAM:
-      console.log(action.products)
-      return {
-        ...state,
-        list: action.products
       }
 
     case C.ADD_TO_CART: {

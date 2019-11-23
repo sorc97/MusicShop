@@ -14,7 +14,7 @@ router.get('/products/:id', (req, res) => {
 })
 
 router.get('/products/category/:category', (req, res) => {
-  Product.find({category: req.params.category})
+  Product.find({category: req.params.category.toLowerCase()})
     .then(products => res.send(products))
 })
 
