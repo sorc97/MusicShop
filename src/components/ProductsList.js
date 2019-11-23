@@ -20,12 +20,23 @@ class ProductsList extends Component {
   }
 
   componentDidMount() {
-    const { category, search } = this.props;
+    const { products, category, search, isMainDataFetched, fetchByParam } = this.props;
+    // console.log(this.isMainDataFetched)
+    console.log(isMainDataFetched);
+    if(isMainDataFetched) return;
+
+    // if(products.length !== 0) return;  //Проверить на баги
+
+    if(category) {
+      fetchByParam('category', category.toLowerCase());
+      console.log('hi');
+      return;
+    }
 
     switch(true) {
-      case !!category:
+      /* case !!category:
         this.fetchProductsByCategory(category);
-      break;
+      break; */
 
       case !!search:
         this.fetchProductsBySearch(search);
@@ -39,7 +50,16 @@ class ProductsList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {location, search, category} = this.props;
+    const {location, search, category, isFetching, isMainDataFetched} = this.props;
+    
+    if(prevProps.location.pathname !== location.pathname && !isMainDataFetched) {
+      this.fetchAllProducts();
+    }
+    // console.log(this.isMainDataFetched);
+  }
+
+  /* componentDidUpdate(prevProps) {
+    const {location, search, category, isFetching} = this.props;
     
     if(prevProps.location.pathname !== location.pathname) {
       let path = location.pathname;
@@ -57,12 +77,12 @@ class ProductsList extends Component {
           this.fetchAllProducts();
       }
     }
-    
-    console.log('Products list was UPDATE ', prevProps, this.props);
-  }
 
-  shouldComponentUpdate(prevProps) {
-    const {location, products} = this.props;
+    console.log('Products list was UPDATE ', prevProps, this.props);
+  } */
+
+  /* shouldComponentUpdate(prevProps) {
+    const {location, products, isFetching} = this.props;
     if(
       equal(prevProps.products, products) &&
       location.pathname === prevProps.location.pathname &&
@@ -70,10 +90,11 @@ class ProductsList extends Component {
     ) return false;
 
     return true;
-  }
+  } */
 
   fetchAllProducts() {
     const { fetchData } = this.props;
+    this.isMainDataFetched = true;
     fetchData('/api/products');
   }
 
@@ -90,7 +111,8 @@ class ProductsList extends Component {
   }
   
   render() {
-    const { products, category, search, query } = this.props;
+    const { products, category, search, query, isFetching } = this.props;
+    // console.log(isFetching);
     
     return(
       <div className='products-list-wrapper'>
@@ -108,9 +130,9 @@ class ProductsList extends Component {
               </span>
           }
         </div>
-        {
-          (products.length === 0) ?
-          <p>Loading...</p> :
+        {isFetching && products.length === 0 && <p>Loading...</p>}
+        {!isFetching && products.length === 0 && <p>Нет товаров</p>}
+        {products.length > 0 && (
           <ul className='products-list'>
             {
               products.map(product =>
@@ -121,8 +143,10 @@ class ProductsList extends Component {
               )
             }
           </ul>
-        }
-        <PaginationContainer query={query}/>
+        )}
+        <PaginationContainer
+          filteredProducts={(category) && products}
+          query={query}/>
       </div>
     )
   }

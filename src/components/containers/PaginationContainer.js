@@ -2,14 +2,17 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Pagination from '../Pagination'
 
-const PaginationContainer = withRouter( 
-  connect(
-    ({ products: {list, productsPerPage} }, { query }) => ({
-      allElements: list,
-      elemPerPage: productsPerPage,
-      query
-    })
-  )(Pagination)
-)
+const mapStateToProps = (
+  { products: { list, productsPerPage } },
+  { query, filteredProducts }
+) => ({
+  allElements: filteredProducts || list,
+  elemPerPage: productsPerPage,
+  query
+})
 
-export default PaginationContainer;
+const PaginationContainer = connect(
+  mapStateToProps
+)(Pagination)
+
+export default withRouter(PaginationContainer)

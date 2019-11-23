@@ -41,8 +41,8 @@ export const sortProducts = (products, sortValue) => compose(
   getSortFunction
 )(sortValue)
 
-export const filterByCategory = (array, category) => 
-  array.filter(item => item.category === category)
+export const filterProducts = (array, key, filterValue) => 
+  array.filter(item => item[key] === filterValue)
 
 export const firstLetterToUpperCase = (string) => {
   let [first, ...rest] = string;
@@ -73,5 +73,6 @@ export const removeFromUrlQuery = (target, currentQuery) => {
   query.delete(target);
   return `?${query.toString()}`
 }
+
 
 window.getElementsFromArrayByInterval = getElementsFromArrayByInterval;

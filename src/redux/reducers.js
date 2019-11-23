@@ -36,17 +36,27 @@ export const products = (
   state = {
     list: [],
     cart: initialCart,
-    productsPerPage: initialProductsPerPage
+    productsPerPage: initialProductsPerPage,
+    isFetching: false,
+    isMainDataFetched: false
   }, 
-  action = {}
+  action
 ) => {
   let { cart, list } = state;
 
   switch(action.type) {
+    case C.REQUEST_POSTS:
+      return {
+        ...state,
+        isFetching: true
+      }
+
     case C.PRODUCTS_FETCH_DATA_SUCCESS:
       return {
         ...state,
-        list: action.products
+        list: action.products,
+        isFetching: false,
+        isMainDataFetched: true
       }
 
     case C.FETCH_PRODUCT_BY_ID:
@@ -55,6 +65,13 @@ export const products = (
         list: [
           action.product
         ]
+      }
+
+    case C.FETCH_PRODUCTS_BY_PARAM:
+      console.log(action.products)
+      return {
+        ...state,
+        list: action.products
       }
 
     case C.ADD_TO_CART: {
@@ -87,14 +104,3 @@ export const products = (
       return state
   }
 }
-
-/* export const productsPerPage = (
-  state = initialProductsPerPage, action
-) => {
-
-  switch(action.type) {
-    
-    default:
-      return state;
-  }
-} */
