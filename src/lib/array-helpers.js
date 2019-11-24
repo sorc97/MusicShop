@@ -89,5 +89,6 @@ export const searchByMultipleFields = (array, fields, query) => {
   }, [])
 }
 
+
 window.searchByMultipleFields = searchByMultipleFields;
 window.searchByField = searchByField;
