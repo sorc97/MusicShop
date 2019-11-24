@@ -3,6 +3,7 @@ import PageTemplate from './PageTemplate'
 import ProductsSection from './ProductsSection'
 import AboutProduct from './containers/AboutProduct'
 import CartContainer from './containers/CartContainer'
+import Error404 from './Error404'
 import { Route, Switch } from 'react-router-dom'
 import './stylesheets/App.css'
 
@@ -17,7 +18,8 @@ const App = () =>
       ]} component={ProductsSection}/>
       <Route path='/product/:id' component={AboutProduct}/>
       <Route path='/cart' component={CartContainer}/>
+      <Route component={Error404}/>
     </Switch>
   </PageTemplate>
 
-export default App
+export default App;
