@@ -1,5 +1,6 @@
 import {compose} from 'redux'
 
+//Find Element by id
 export const getFirstArrayElement = array => array[0]
 
 export const findElementById = (array, id) => 
@@ -10,6 +11,7 @@ export const findById = compose(
   findElementById
 )
 
+//Sorting
 const sortByHighPrice = field =>
   (a, b) => b[field] - a[field]
 
@@ -18,7 +20,6 @@ const sortByLowPrice = field =>
 
 const sortByString = field =>
   (a, b) => (a[field].toLowerCase() > b[field].toLowerCase()) ? 1: -1;
-
 
 export const getSortFunction = (sortValue) => {
   switch(sortValue){
@@ -41,54 +42,68 @@ export const sortProducts = (products, sortValue) => compose(
   getSortFunction
 )(sortValue)
 
+//Filtering
 export const filterProducts = (array, key, filterValue) => 
   array.filter(item => item[key] === filterValue)
 
-export const firstLetterToUpperCase = (string) => {
-  let [first, ...rest] = string;
-  let upperFirst = first.toUpperCase();
+//Capitalizing
+export const firstLetterToUpperCase = str => 
+  str.charAt(0).toUpperCase() + str.slice(1);
 
-  return [upperFirst, ...rest].join('');
-}
-
+//Get array elements by interval
 export const getElementsFromArrayByInterval = (array, first, last) =>
   array.filter((item, i) => (i >= first && i <= last))
 
+//Query methods
 export const makeSearchParam = (init) =>
   new URLSearchParams(init)
-  
-export const makeUrlQuery = (name, value, currentQuery) => {
-  let query = makeSearchParam(currentQuery);
 
+export const makeQuery = (name, value) => query => {
   if(query.get(name)) {
     query.set(name, value);
-  }else {
-    query.append(name, value);
-  }  
-  return `?${query.toString()}`;
+  } else {
+    query.append(name, value);  
+  }
+
+  return query;
 }
 
-export const removeFromUrlQuery = (target, currentQuery) => {
-  let query = makeSearchParam(currentQuery);
+export const removeFromQuery = target => query => {
   query.delete(target);
-  return `?${query.toString()}`
+  return query;
 }
 
+export const makeQueryString = query => `?${query.toString()}`
+
+export const makeUrlQuery = (name, value, init) => compose(
+  makeQueryString,
+  makeQuery(name, value),
+  makeSearchParam
+)(init)
+
+export const removeFromUrlQuery = (target, currentQuery) => compose(
+  makeQueryString,
+  removeFromQuery(target),
+  makeSearchParam
+)(currentQuery)
+
+//Searching
 export const searchByField = (array, field, query) => 
   array.filter(item => 
     item[field].toLowerCase().includes(query.toLowerCase())
   );
 
-export const searchByMultipleFields = (array, fields, query) => {
-  let arrayOfFields = fields.split(' ');
+export const splitString = splitter => string => 
+  string.split(splitter);
 
-  return arrayOfFields.reduce((prev, current) => {  
+export const getElementsByFields = (array, query) => (fields) => 
+  fields.reduce((prev, current) => {  
     if(prev.length > 0) return prev;
     
     return searchByField(array, current, query);
   }, [])
-}
 
-
-window.searchByMultipleFields = searchByMultipleFields;
-window.searchByField = searchByField;
+export const searchByMultipleFields = (array, fields, query) => compose(
+  getElementsByFields(array, query),
+  splitString(' ')
+)(fields)
