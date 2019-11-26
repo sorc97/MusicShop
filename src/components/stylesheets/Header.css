@@ -15,6 +15,12 @@
   padding: 20px 0px;
 }
 
+.header-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 25px;
+}
+
 .logo{
   font-family: 'Lobster', open-sans;
   margin: 0px;
@@ -48,3 +54,19 @@
 .cart-elementsCounter{
   font-weight: bold;
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 767px) {
+  .header-menu {
+    display: inline-block;
+  }
+
+  .cart-title{
+    display: none;
+  }
+
+  .cart-link{
+    padding: 10px;
+  }
+} 

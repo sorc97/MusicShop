@@ -59,6 +59,7 @@ export const makeSearchParam = (init) =>
   new URLSearchParams(init)
 
 export const makeQuery = (name, value) => query => {
+
   if(query.get(name)) {
     query.set(name, value);
   } else {

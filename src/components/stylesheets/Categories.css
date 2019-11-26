@@ -41,3 +41,9 @@
     width: 40%;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .categories{
+    display: none;
+  }
+} 

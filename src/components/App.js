@@ -3,12 +3,13 @@ import PageTemplate from './PageTemplate'
 import ProductsSection from './ProductsSection'
 import AboutProduct from './containers/AboutProduct'
 import CartContainer from './containers/CartContainer'
+import PageTemplateContainer from './containers/PageTemplateContainer'
 import Error404 from './Error404'
 import { Route, Switch } from 'react-router-dom'
 import './stylesheets/App.css'
 
 const App = () =>
-  <PageTemplate>
+  <PageTemplateContainer>
     <Switch>
       <Route exact path='/' component={ProductsSection}/>
       <Route path={[
@@ -20,6 +21,6 @@ const App = () =>
       <Route path='/cart' component={CartContainer}/>
       <Route component={Error404}/>
     </Switch>
-  </PageTemplate>
+  </PageTemplateContainer>
 
 export default App;

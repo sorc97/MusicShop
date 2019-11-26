@@ -98,3 +98,13 @@ export const products = (
       return state
   }
 }
+
+export const isSideMenuOpen = (state = false, action) => {
+  switch(action.type) {
+    case C.TOGGLE_SIDE_MENU: 
+      return !state;
+
+    default:
+      return state;
+  }
+}

@@ -9,8 +9,5 @@
 
 .sort-item-link.active{
   text-decoration: underline;
-}
-
-.sort-item-link.active{
-  text-decoration: underline;
+  font-weight: bold;
 }

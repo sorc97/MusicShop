@@ -1,5 +1,6 @@
 .product-info{
   background-color: #fff;
+  display: flex;
 }
 
 .product-info-inner{
@@ -47,6 +48,7 @@
 
 .product-info img{
   max-height: 500px;
+  max-width: 400px;
 }
 
 @media screen and (max-width: 1200px) {

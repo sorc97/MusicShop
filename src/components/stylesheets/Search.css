@@ -35,3 +35,9 @@
     order: 3;
   }
 }
+
+@media screen and (max-width: 420px) {
+  .search-form>*{
+    font-size: inherit;
+  }
+}

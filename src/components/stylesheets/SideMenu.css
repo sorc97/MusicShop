@@ -1,0 +1,41 @@
+
+.side-menu {
+  position: fixed;
+  display: flex;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  z-index: 10;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.78);
+  animation: slideRight .2s ease;
+}
+
+.side-menu>.categories{
+  display: inline-block;
+  width: 100%;
+  padding: 0px;
+  text-align: center;
+  max-width: none;
+  align-self: center;
+}
+
+.side-menu-close {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  font-size: 35px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@keyframes slideRight {
+  from{left: -500px}
+  to{left: 0px}
+}
+
+/* @keyframes slideRight {
+  from{opacity: 0}
+  to{opacity: 1}
+} */
+

@@ -50,3 +50,7 @@ export const changeCartProductAmount = (id, operator) => ({
   id,
   operator
 })
+
+export const toggleSideMenu = () => ({
+  type: C.TOGGLE_SIDE_MENU
+})

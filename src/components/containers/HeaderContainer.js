@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import Header from '../Header'
 import { logo } from '../../lib/config'
+import { toggleSideMenu } from '../../redux/actionCreators'
 
 const HeaderContainer = connect(
   ({ products: { cart } }) => ({
@@ -8,6 +9,11 @@ const HeaderContainer = connect(
       prev + next.amount
     , 0),
     logo
+  }),
+  dispatch => ({
+    sideMenuHandling() {
+      dispatch(toggleSideMenu());
+    }
   })
 )(Header)
 

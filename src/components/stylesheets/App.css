@@ -9,6 +9,7 @@ body{
 }
 
 a{
+  display: inline-block;
   text-decoration: none;
   color: #000;
 }
@@ -39,3 +40,14 @@ main{
     padding: 0px 20px;
   }
 }
+
+@media screen and (max-width: 420px) {
+  :root{
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+}
+
