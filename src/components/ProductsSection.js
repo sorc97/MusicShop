@@ -10,11 +10,10 @@ const ProductsSection = () =>
     <div className='container'>
       <div className='main-inner'>
         <Categories 
-          categoriesList={categoriesList}
-        />
+          categoriesList={categoriesList} />
         <div className='products'>
-          <Sort sortList={sortList}/>
-          <VisibleProducts/>
+          <Sort sortList={sortList} />
+          <VisibleProducts />
         </div>
       </div>
     </div>

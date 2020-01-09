@@ -1,11 +1,11 @@
 import React from 'react'
-import ProductsSection from './ProductsSection'
-import AboutProduct from './containers/AboutProduct'
-import CartContainer from './containers/CartContainer'
-import PageTemplate from './PageTemplate'
-import Error404 from './Error404'
+import ProductsSection from '../ProductsSection'
+import AboutProduct from '../containers/AboutProduct'
+import CartContainer from '../containers/CartContainer'
+import PageTemplate from '../PageTemplate/PageTemplate'
+import Error404 from '../Error404'
 import { Route, Switch } from 'react-router-dom'
-import './stylesheets/App.css'
+import './App.css'
 
 const App = () =>
   <PageTemplate>

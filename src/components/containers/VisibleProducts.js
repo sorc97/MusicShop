@@ -21,51 +21,45 @@ const mapStateToProps = (
       isFetching,
       isMainDataFetched
     }
-  },
-  {
-    match: {
-      params: {
-        category,
-        search
-      },
-      params
-    },
-    location
-  }
+  }, //state
+  { match: { params }, location } //props
 ) => {
   //Query Params
-  let query = queryString.parse(location.search);
-  let sortValue = query.sort;
-  const currentPage = query.page || 1;
-
+  const query = queryString.parse(location.search);
+  const { category, search } = params;
+  const sortValue = query.sort;
+  const currentPage = +query.page || 1;
+  let currentList = [...list];
   //Pagination
   const lastElement = productsPerPage * currentPage - 1;
   const firstElement = lastElement - productsPerPage + 1;
-
   //Filter by category
   if (category && isMainDataFetched) {
-    list = filterProducts(list, 'category', category)
+    currentList = filterProducts(currentList, 'category', category)
   }
-
   //Elements searching
   if (search && isMainDataFetched) {
-    list = searchByMultipleFields(list, 'name category', search)
-    console.log('SEARCH', list);
+    currentList = searchByMultipleFields(
+      currentList, 'name category', search
+    )
+    console.log('SEARCH', currentList);
   }
-
-  //Filter elements to pagination
-  let currentProducts = getElementsFromArrayByInterval(
-    list, firstElement, lastElement
+  //Products sorting
+  const sortedProducts = sortProducts(currentList, sortValue);
+  //Products paginating
+  let paginatedProducts = getElementsFromArrayByInterval(
+    sortedProducts, firstElement, lastElement
   )
 
-  console.log(list);
+  console.log(currentList);
 
   return {
-    products: sortProducts(currentProducts, sortValue),
+    products: paginatedProducts,
+    sortedProducts,
     category,
     search,
     location,
-    query,
+    currentPage,
     isFetching,
     isMainDataFetched,
     params

@@ -52,7 +52,7 @@ export const products = (
       }
 
     case C.RECEIVE_PRODUCTS:
-      console.log(!!action.isMain);
+      console.log(action.isMain);
       return {
         ...state,
         list: Array.isArray(action.products) ?

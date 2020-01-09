@@ -1,20 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { makeUrlQuery, removeFromUrlQuery } from '../lib/array-helpers'
 import classNames from 'classnames'
+import { Link, withRouter } from 'react-router-dom'
+import { makeUrlQuery, removeFromUrlQuery } from '../lib/array-helpers'
 import './stylesheets/Pagination.css'
 
 const Pagination = ({
-  allElements, elemPerPage, query, location
+  allElements, elemPerPage, location, currentPage
 }) => {
 
-  let paginationLength = Math.ceil(allElements.length/elemPerPage);
-  let search = location.search;   //current search query
-  let currentPage = +query.page || 1;
-  let pages = [...Array(paginationLength)].map((item, i) => i+1);  //pagination pages
+  let paginationLength = Math.ceil(allElements.length / elemPerPage);
+  let search = location.search;  //current search query
+  let pages = [...Array(paginationLength)].map((item, i) => i + 1);  //Pages amount
 
-
-  return(
+  return (
     <ul className='pagination-list'>
       {
         pages.map(number => {
@@ -24,12 +22,12 @@ const Pagination = ({
             active: currentPage === number
           })
 
-          return(
+          return (
             <li key={number}>
-              <Link 
+              <Link
                 to={
                   (number === 1) ?
-                    removeFromUrlQuery('page', search):
+                    removeFromUrlQuery('page', search) :
                     makeUrlQuery('page', number, search)
                 }
                 className={classes}
@@ -42,6 +40,5 @@ const Pagination = ({
       }
     </ul>
   )
-
 }
-export default Pagination;
+export default withRouter(Pagination);

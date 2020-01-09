@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import './stylesheets/CartDisplay.css'
+import './CartDisplay.css'
 
 const CartDisplay = ({ amount = 0, text = 'Корзина' }) =>
   <Link to='/cart' className='cart-link'>

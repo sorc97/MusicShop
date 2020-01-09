@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import HeaderContainer from './containers/HeaderContainer'
-import SideMenuContainer from './containers/SideMenuContainer'
-import Footer from './Footer'
-import { logo } from '../lib/config'
-import Categories from './Categories'
-import { categoriesList } from '../lib/config'
+import HeaderContainer from './Header/HeaderContainer'
+import SideMenuContainer from './SideMenu/SideMenuContainer'
+import Footer from './Footer/Footer'
+import Categories from '../Categories'
+import { logo } from '../../lib/config'
+import { categoriesList } from '../../lib/config'
 
 const PageTemplate = ({
   children

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './components/App'
+import App from './components/App/App'
 import ScrollToTop from './components/ScrollToTop'
 import { Provider } from 'react-redux'
 import { HashRouter as Router} from 'react-router-dom'

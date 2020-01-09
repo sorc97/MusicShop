@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Product from './Product'
-import PaginationContainer from './containers/PaginationContainer'
 import PropTypes from 'prop-types'
-import equal from 'deep-equal'
+import Product from './Product'
+import Pagination from './Pagination'
 import { NavLink } from 'react-router-dom'
 import { firstLetterToUpperCase } from '../lib/array-helpers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
+import { initialProductsPerPage } from '../lib/config'
 import './stylesheets/ProductsList.css'
 
 
@@ -18,7 +18,7 @@ class ProductsList extends Component {
     const paramName = Object.keys(params)[0];
 
     if (paramName && !isMainDataFetched) {
-      console.log('FETCH BY PARAMS')
+      console.log('FETCH BY PARAMS', paramName);
       fetchByParam(paramName, params[paramName]);
       return;
     }
@@ -27,22 +27,7 @@ class ProductsList extends Component {
 
     if (isMainDataFetched) return;
 
-
     fetchData();
-
-    /* switch(true) {
-      case !!category:
-        fetchByParam('category', category.toLowerCase());
-      break;
-
-      case !!search:
-        fetchByParam('search', search.toLowerCase());
-      break;
-
-      default:
-        fetchData();
-    } */
-
     console.log('FETCHED INITIAL');
   }
 
@@ -57,17 +42,17 @@ class ProductsList extends Component {
 
   fetchAllProducts() {
     const { fetchData } = this.props;
-    this.isMainDataFetched = true;
     fetchData();
   }
 
   render() {
-    const { 
+    const {
       products,
-      category, 
-      search, 
-      query, 
-      isFetching
+      category,
+      search,
+      isFetching,
+      sortedProducts,
+      currentPage
     } = this.props;
 
     return (
@@ -100,9 +85,10 @@ class ProductsList extends Component {
             }
           </ul>
         )}
-        <PaginationContainer
-          filteredProducts={(category || search) && products}
-          query={query} />
+        <Pagination
+          allElements={sortedProducts}
+          currentPage={currentPage}
+          elemPerPage={initialProductsPerPage} />
       </div>
     )
   }

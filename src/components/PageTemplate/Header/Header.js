@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Search from './Search'
-import CartDisplay from './CartDisplay'
-import SideMenuToggler from './SideMenuToggler'
+import Search from './Search/Search'
+import CartDisplay from './CartDisplay/CartDisplay'
+import SideMenuToggler from './SideMenuToggler/SideMenuToggler'
 import { Link } from 'react-router-dom'
-import './stylesheets/Header.css'
+import './Header.css'
 
 const Header = ({
   logo = 'Logo',

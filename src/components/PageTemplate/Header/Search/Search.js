@@ -1,10 +1,10 @@
 import React from 'react'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import {withRouter} from 'react-router-dom'
-import './stylesheets/Search.css'
+import { withRouter } from 'react-router-dom'
+import './Search.css'
 
-const Search = ({history}) => {
+const Search = ({ history }) => {
   let _searchQuery;
 
   const submit = (e) => {
@@ -16,16 +16,16 @@ const Search = ({history}) => {
     _searchQuery.value = '';
   }
 
-  return(
+  return (
     <form className='search-form' onSubmit={submit}>
-      <input type='text' 
-        placeholder='Поиск товара' 
+      <input type='text'
+        placeholder='Поиск товара'
         name='query'
         ref={input => _searchQuery = input}
         required
       />
       <button className='search-button'>
-        <FontAwesomeIcon icon={faSearch}/>
+        <FontAwesomeIcon icon={faSearch} />
       </button>
     </form>
   )

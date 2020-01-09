@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NavLink, } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './stylesheets/Categories.css'
 
 const Categories = ({
@@ -27,8 +27,7 @@ const Categories = ({
   
 
 Categories.propTypes = {
-  categoriesItems: PropTypes.array,
-  fetchData: PropTypes.func
+  categoriesItems: PropTypes.array
 }
 
 export default Categories

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './stylesheets/SideMenu.css'
+import './SideMenu.css'
 
 const SideMenu = ({
   children,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import './stylesheets/Footer.css'
+import './Footer.css'
 
 const Footer = ({ logo = '' }) =>
   <footer className='footer'>
