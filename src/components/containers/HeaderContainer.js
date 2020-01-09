@@ -5,9 +5,11 @@ import { toggleSideMenu } from '../../redux/actionCreators'
 
 const HeaderContainer = connect(
   ({ products: { cart } }) => ({
-    elementsInCartAmout: cart.reduce((prev, next) =>
-      prev + next.amount
-    , 0),
+    //Counting amount of elements in cart 
+    elementsInCartAmout: cart.reduce(
+      (prev, next) =>  
+        prev + next.amount
+      , 0),
     logo
   }),
   dispatch => ({

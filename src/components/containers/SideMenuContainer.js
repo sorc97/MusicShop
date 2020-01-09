@@ -1,16 +1,17 @@
 import { connect } from 'react-redux'
+import SideMenu from '../SideMenu'
 import { toggleSideMenu } from '../../redux/actionCreators'
-import PageTemplate from '../PageTemplate'
 
-const PageTemplateContainer = connect(
-  ({ isSideMenuOpen }) => ({
-    isSideMenuOpen
+const SideMenuContainer = connect(
+  ({ isSideMenuOpen }, { children }) => ({
+    isSideMenuOpen,
+    children
   }),
   dispatch => ({
     sideMenuClickHandler() {
       dispatch(toggleSideMenu());
     }
   })
-)(PageTemplate) 
+)(SideMenu);
 
-export default PageTemplateContainer
+export default SideMenuContainer

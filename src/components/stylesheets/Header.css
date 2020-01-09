@@ -15,12 +15,6 @@
   padding: 20px 0px;
 }
 
-.header-menu {
-  display: none;
-  cursor: pointer;
-  font-size: 25px;
-}
-
 .logo{
   font-family: 'Lobster', open-sans;
   margin: 0px;
@@ -28,45 +22,3 @@
   font-size: 30px;
   font-weight: bold;
 }
-
-.cart-link{
-  border: 2px solid black;
-  padding: 10px 15px;
-  border-radius: 3px;
-  cursor: pointer;
-  color: #000;
-  transition: all .3s ease;
-}
-
-.cart-link:hover{
-  background-color: #000;
-  color: #fff;
-}
-
-.cart-elementsCounter{
-  margin-left: 10px;
-}
-
-.cart-link-wrapper:hover .cart-link{
-  color: #fff;
-}
-
-.cart-elementsCounter{
-  font-weight: bold;
-}
-
-/* Media Queries */
-
-@media screen and (max-width: 767px) {
-  .header-menu {
-    display: inline-block;
-  }
-
-  .cart-title{
-    display: none;
-  }
-
-  .cart-link{
-    padding: 10px;
-  }
-} 

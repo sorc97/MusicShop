@@ -1,21 +1,37 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { 
+import {
   fetchAllProducts,
   fetchProductsByParam
 } from '../../redux/actionCreators'
-import { 
-  sortProducts, 
-  getElementsFromArrayByInterval, 
-  filterProducts, 
+import {
+  sortProducts,
+  getElementsFromArrayByInterval,
+  filterProducts,
   searchByMultipleFields
 } from '../../lib/array-helpers'
 import queryString from 'query-string'
 import ProductsList from '../ProductsList'
 
 const mapStateToProps = (
-  { products: { list, productsPerPage, isFetching, isMainDataFetched } } ,
-  { match: { params: {category, search}, params }, location }
+  {
+    products: {
+      list,
+      productsPerPage,
+      isFetching,
+      isMainDataFetched
+    }
+  },
+  {
+    match: {
+      params: {
+        category,
+        search
+      },
+      params
+    },
+    location
+  }
 ) => {
   //Query Params
   let query = queryString.parse(location.search);
@@ -27,23 +43,23 @@ const mapStateToProps = (
   const firstElement = lastElement - productsPerPage + 1;
 
   //Filter by category
-  if(category && isMainDataFetched) {
+  if (category && isMainDataFetched) {
     list = filterProducts(list, 'category', category)
   }
-  
+
   //Elements searching
-  if(search && isMainDataFetched) {
+  if (search && isMainDataFetched) {
     list = searchByMultipleFields(list, 'name category', search)
     console.log('SEARCH', list);
   }
-  
+
   //Filter elements to pagination
   let currentProducts = getElementsFromArrayByInterval(
     list, firstElement, lastElement
   )
-  
+
   console.log(list);
-  
+
   return {
     products: sortProducts(currentProducts, sortValue),
     category,

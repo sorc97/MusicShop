@@ -5,10 +5,10 @@ import PropTypes from 'prop-types'
 import equal from 'deep-equal'
 import { NavLink } from 'react-router-dom'
 import { firstLetterToUpperCase } from '../lib/array-helpers'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import './stylesheets/ProductsList.css'
-  
+
 
 class ProductsList extends Component {
 
@@ -17,19 +17,19 @@ class ProductsList extends Component {
     const { fetchData, fetchByParam } = this.props;
     const paramName = Object.keys(params)[0];
 
-    if(paramName && !isMainDataFetched) {
+    if (paramName && !isMainDataFetched) {
       console.log('FETCH BY PARAMS')
       fetchByParam(paramName, params[paramName]);
       return;
     }
 
     console.log(isMainDataFetched);
-    
-    if(isMainDataFetched) return;
+
+    if (isMainDataFetched) return;
 
 
     fetchData();
-    
+
     /* switch(true) {
       case !!category:
         fetchByParam('category', category.toLowerCase());
@@ -42,14 +42,14 @@ class ProductsList extends Component {
       default:
         fetchData();
     } */
-    
+
     console.log('FETCHED INITIAL');
   }
 
   componentDidUpdate(prevProps) {
-    const {location, isMainDataFetched} = this.props;
-    
-    if(prevProps.location.pathname !== location.pathname && !isMainDataFetched) {
+    const { location, isMainDataFetched } = this.props;
+
+    if (prevProps.location.pathname !== location.pathname && !isMainDataFetched) {
       console.log('FROM UPDATE');
       this.fetchAllProducts();
     }
@@ -60,24 +60,30 @@ class ProductsList extends Component {
     this.isMainDataFetched = true;
     fetchData();
   }
-  
+
   render() {
-    const { products, category, search, query, isFetching } = this.props;
-    
-    return(
+    const { 
+      products,
+      category, 
+      search, 
+      query, 
+      isFetching
+    } = this.props;
+
+    return (
       <div className='products-list-wrapper'>
         <div className='products-list-caption'>
           <h1 className='products-mainCategory'>
-            { (category) ? firstLetterToUpperCase(category) : 
-              (search) ? 'Поиск' : 'Все товары' }
+            {(category) ? firstLetterToUpperCase(category) :
+              (search) ? 'Поиск' : 'Все товары'}
           </h1>
           {
             (category || search) &&
-              <span>
-                <NavLink to={'/'} className='products-list-goBack'>
-                  <FontAwesomeIcon icon={faLongArrowAltLeft}/>
-                </NavLink>
-              </span>
+            <span>
+              <NavLink to={'/'} className='products-list-goBack'>
+                <FontAwesomeIcon icon={faLongArrowAltLeft} />
+              </NavLink>
+            </span>
           }
         </div>
         {isFetching && products.length === 0 && <h2>Loading...</h2>}
@@ -86,8 +92,8 @@ class ProductsList extends Component {
           <ul className='products-list'>
             {
               products.map(product =>
-                <Product 
-                  key={product._id} 
+                <Product
+                  key={product._id}
                   {...product}
                 />
               )
@@ -96,7 +102,7 @@ class ProductsList extends Component {
         )}
         <PaginationContainer
           filteredProducts={(category || search) && products}
-          query={query}/>
+          query={query} />
       </div>
     )
   }

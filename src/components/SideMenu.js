@@ -1,10 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './stylesheets/SideMenu.css'
 
-const SideMenu = ({ children, onClick }) =>
-  <div onClick={onClick} className='side-menu'>
+const SideMenu = ({
+  children,
+  isSideMenuOpen = false,
+  sideMenuClickHandler = f => f,
+}) =>
+  isSideMenuOpen &&
+  <div
+    onClick={sideMenuClickHandler}
+    className='side-menu'
+  >
     <span className='side-menu-close'>&times;</span>
     {children}
   </div>
 
-export default SideMenu;
+SideMenu.propTypes = {
+  children: PropTypes.node,
+  sideMenuClickHandler: PropTypes.func,
+  isSideMenuOpen: PropTypes.bool
+}
+
+export default SideMenu
