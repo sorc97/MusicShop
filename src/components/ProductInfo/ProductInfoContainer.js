@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import { findById } from '../../lib/array-helpers';
+import { findById } from '../../lib/array-helpers'
 import {
   fetchProductById,
   addToCart
 } from '../../redux/actionCreators'
-import ProductInfo from '../ProductInfo';
+import ProductInfo from './ProductInfo'
 
 const mapStateToProps = (
   { products: { list } },
@@ -23,9 +23,9 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const AboutProduct = connect(
+const ProductInfoContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProductInfo)
 
-export default AboutProduct;
+export default ProductInfoContainer

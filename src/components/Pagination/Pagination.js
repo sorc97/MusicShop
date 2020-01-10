@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Link, withRouter } from 'react-router-dom'
-import { makeUrlQuery, removeFromUrlQuery } from '../lib/array-helpers'
-import './stylesheets/Pagination.css'
+import { makeUrlQuery, removeFromUrlQuery } from '../../lib/array-helpers'
+import './Pagination.css'
 
 const Pagination = ({
   allElements, elemPerPage, location, currentPage

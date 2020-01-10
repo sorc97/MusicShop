@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Counter from '../../Counter'
+import Counter from '../../Counter/Counter'
 import './CartTableItem.css'
 
 const CartTableItem = ({
@@ -19,7 +19,7 @@ const CartTableItem = ({
         src={img} />
     </div>
     <h2 className='cart-product-title'>{name}</h2>
-    <h3 className='cart-product-price'>{price} р.</h3>
+    <h3 className='cart-product-price'>{price.toLocaleString()} р.</h3>
     <Counter
       countUp={() => changeAmount(_id, '+')}
       countDown={() => changeAmount(_id, '-')}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { firstLetterToUpperCase } from '../../../../lib/array-helpers'
-import  AddToCartButton from '../../../containers/AddToCartButton'
+import  AddToCartButton from '../../../AddToCartButton/AddToCartButton'
 import './ProductsItem.css'
 
 const buttonStyle = {
@@ -47,7 +47,7 @@ class ProductsItem extends Component {
             </Link>
           </h1>
         </div>
-        <h2 className='product-price'>{price} р.</h2>
+        <h2 className='product-price'>{price.toLocaleString()} р.</h2>
         <AddToCartButton 
           style={buttonStyle} 
           id={_id}

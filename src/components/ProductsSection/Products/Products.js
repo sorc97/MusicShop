@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ProductsList from './ProductsList/ProductsList'
 import ProductsCaption from './ProductsCaption/ProductsCaption'
-import Pagination from '../../Pagination'
+import Pagination from '../../Pagination/Pagination'
 import { initialProductsPerPage } from '../../../lib/config'
 import './Products.css'
 

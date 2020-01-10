@@ -55,10 +55,6 @@
   max-width: 250px;
 }
 
-.product-category{
-  cursor: pointer;
-}
-
 .product-category:hover{
   color: #929292;
 }

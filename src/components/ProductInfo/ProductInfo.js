@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AddToCartButton from './containers/AddToCartButton'
-import './stylesheets/ProductInfo.css'
+import AddToCartButton from '../AddToCartButton/AddToCartButton'
+import { firstLetterToUpperCase } from '../../lib/array-helpers'
+import { Link } from 'react-router-dom'
+import './ProductInfo.css'
 
 const buttonStyle = {
   width: '100%'
@@ -13,37 +15,42 @@ class ProductInfo extends React.Component {
     const {
       name, fetchProduct, id
     } = this.props;
-    
-    if(name === 'unknown') {
+
+    if (name === 'unknown') {
       fetchProduct(id)
     }
   }
-  
+
   render() {
     const {
       name, category, img, price, description, id
     } = this.props;
-    
-    return(
+
+    return (
       <main className='product-info'>
         <div className='container'>
           <div className='product-info-inner'>
             <div className='img-section'>
-              <img src={img} alt='product img'/>
+              <img src={img} alt='product img' />
             </div>
             <div className='about-section'>
               <h1>{name}</h1>
-              <span>{category}</span>
-              <p className='about-section-description'>
+              <Link
+                className='about-category'
+                to={`/category/${category.toLowerCase()}`}
+              >
+                {firstLetterToUpperCase(category)}
+              </Link>
+              <p className='about-description'>
                 {description}
               </p>
             </div>
             <div className='buy-section'>
-              <h2>{price} р.</h2>
+              <h2>{price.toLocaleString()} р.</h2>
               <AddToCartButton
                 id={id}
                 style={buttonStyle}
-                className='product-button'/>
+                className='product-button' />
             </div>
           </div>
         </div>

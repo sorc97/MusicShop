@@ -4,7 +4,8 @@ import {
   addToCart,
   removeFromCart
 } from '../../redux/actionCreators'
-import ToggleButton from '../ToggleButton'
+import ToggleButton from './ToggleButton/ToggleButton'
+import './AddToCartButton.css'
 
 const mapStateToProps = (
   { products: { cart } },
