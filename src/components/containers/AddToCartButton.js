@@ -17,7 +17,7 @@ const mapStateToProps = (
   className
 })
 
-const mapDispatchtoProps = ( dispatch, { id } ) => ({
+const mapDispatchtoProps = (dispatch, { id }) => ({
   onPositiveClick() {
     dispatch(addToCart(id))
   },

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import SortItem from './SortItem/SortItem'
 import { Link } from 'react-router-dom'
-import SortItem from './SortItem'
 import { withRouter } from 'react-router-dom'
-import { removeFromUrlQuery } from '../lib/array-helpers'
-import './stylesheets/Sort.css'
+import { removeFromUrlQuery } from '../../../lib/array-helpers'
+import './Sort.css'
 
 const Sort = ({
   sortList = [],

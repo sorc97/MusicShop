@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { firstLetterToUpperCase } from '../lib/array-helpers'
-import  AddToCartButton from './containers/AddToCartButton'
-import './stylesheets/Product.css'
+import { firstLetterToUpperCase } from '../../../../lib/array-helpers'
+import  AddToCartButton from '../../../containers/AddToCartButton'
+import './ProductsItem.css'
 
 const buttonStyle = {
   position: 'absolute',
@@ -11,7 +12,11 @@ const buttonStyle = {
   width: '100%'
 }
 
-class Product extends Component {
+class ProductsItem extends Component {
+
+  shouldComponentUpdate(prevProps) {
+    if(prevProps.name === this.props.name) return false;
+  }
   
   render() {
     const {
@@ -52,4 +57,20 @@ class Product extends Component {
   }
 }
 
-export default Product;
+ProductsItem.propTypes = {
+  name: PropTypes.string, 
+  category: PropTypes.string, 
+  img: PropTypes.string, 
+  price: PropTypes.number, 
+  _id: PropTypes.string,
+}
+
+ProductsItem.defaultProps = {
+  name: "Unknown", 
+  category: "Unknown", 
+  img: "", 
+  price: 0, 
+  _id: "0",
+}
+
+export default ProductsItem;

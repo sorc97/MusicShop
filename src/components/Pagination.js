@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Link, withRouter } from 'react-router-dom'
 import { makeUrlQuery, removeFromUrlQuery } from '../lib/array-helpers'
@@ -41,4 +42,19 @@ const Pagination = ({
     </ul>
   )
 }
+
+Pagination.propTypes = {
+  allElements: PropTypes.array, 
+  elemPerPage: PropTypes.number, 
+  location: PropTypes.object, 
+  currentPage: PropTypes.number
+}
+
+Pagination.defaultProps = {
+  allElements: [], 
+  elemPerPage: 10, 
+  location: {}, 
+  currentPage: 1
+}
+
 export default withRouter(Pagination);

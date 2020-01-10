@@ -1,26 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import {Link} from 'react-router-dom'
-import { makeUrlQuery } from '../lib/array-helpers'
 import queryString from 'query-string'
-import './stylesheets/SortItem.css'
+import { Link } from 'react-router-dom'
+import { makeUrlQuery } from '../../../../lib/array-helpers'
+import './SortItem.css'
 
 const SortItem = ({
-  query, item
+  query = "", item = {}
 }) => {
-  
+
   const sortName = Object.keys(item)[0];
   const sortValue = Object.values(item)[0];
   let sortValueInURL = queryString.parse(query).sort;
-  
+
   const classes = classNames(
     'sort-item-link',
     (sortValue === sortValueInURL) && 'active'
   )
 
-  return(
+  return (
     <li className='sort-item'>
-      <Link 
+      <Link
         className={classes}
         to={makeUrlQuery('sort', sortValue, query)}
       >
@@ -28,6 +29,11 @@ const SortItem = ({
       </Link>
     </li>
   )
+}
+
+SortItem.propTypes = {
+  query: PropTypes.string,
+  item: PropTypes.object
 }
 
 export default SortItem;

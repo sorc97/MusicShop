@@ -1,5 +1,8 @@
 .categories{
-  position: relative;
+  /* position: relative; */
+  position: sticky;
+  top: 115px;
+  left: 0;
   width: 30%;
   max-width: 300px;
   display: flex;

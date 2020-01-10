@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductsSection from '../ProductsSection'
+import ProductsSection from '../ProductsSection/ProductsSection'
 import AboutProduct from '../containers/AboutProduct'
 import CartContainer from '../containers/CartContainer'
 import PageTemplate from '../PageTemplate/PageTemplate'

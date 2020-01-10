@@ -1,9 +1,9 @@
 import React from 'react'
-import Categories from './Categories'
-import Sort from './Sort'
-import VisibleProducts from './containers/VisibleProducts'
-import { categoriesList, sortList } from '../lib/config'
-import './stylesheets/ProductsSection.css'
+import Categories from '../Categories'
+import Sort from './Sort/Sort'
+import ProductsContainer from './Products/ProductsContainer'
+import { categoriesList, sortList } from '../../lib/config'
+import './ProductsSection.css'
 
 const ProductsSection = () =>
   <main className='main-wrapper'>
@@ -13,7 +13,7 @@ const ProductsSection = () =>
           categoriesList={categoriesList} />
         <div className='products'>
           <Sort sortList={sortList} />
-          <VisibleProducts />
+          <ProductsContainer />
         </div>
       </div>
     </div>

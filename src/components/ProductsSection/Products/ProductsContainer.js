@@ -3,15 +3,15 @@ import { withRouter } from 'react-router-dom'
 import {
   fetchAllProducts,
   fetchProductsByParam
-} from '../../redux/actionCreators'
+} from '../../../redux/actionCreators'
 import {
   sortProducts,
   getElementsFromArrayByInterval,
   filterProducts,
   searchByMultipleFields
-} from '../../lib/array-helpers'
+} from '../../../lib/array-helpers'
 import queryString from 'query-string'
-import ProductsList from '../ProductsList'
+import Products from './Products'
 
 const mapStateToProps = (
   {
@@ -75,9 +75,9 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const VisibleProducts = connect(
+const ProductsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductsList)
+)(Products)
 
-export default withRouter(VisibleProducts)
+export default withRouter(ProductsContainer)

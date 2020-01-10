@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Product from './Product'
-import Pagination from './Pagination'
-import { NavLink } from 'react-router-dom'
-import { firstLetterToUpperCase } from '../lib/array-helpers'
+import ProductsList from './ProductsList/ProductsList'
+import Pagination from '../../Pagination'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
-import { initialProductsPerPage } from '../lib/config'
-import './stylesheets/ProductsList.css'
+import { firstLetterToUpperCase } from '../../../lib/array-helpers'
+import { initialProductsPerPage } from '../../../lib/config'
+import './Products.css'
 
 
-class ProductsList extends Component {
+class Products extends Component {
 
   componentDidMount() {
-    const { isMainDataFetched, params } = this.props;
+    const { isMainDataFetched, params, products } = this.props;
     const { fetchData, fetchByParam } = this.props;
     const paramName = Object.keys(params)[0];
+
+    // if(paramName && products.length) return;
 
     if (paramName && !isMainDataFetched) {
       console.log('FETCH BY PARAMS', paramName);
@@ -52,12 +54,12 @@ class ProductsList extends Component {
       search,
       isFetching,
       sortedProducts,
-      currentPage
+      currentPage,
     } = this.props;
 
     return (
-      <div className='products-list-wrapper'>
-        <div className='products-list-caption'>
+      <div className='products-wrapper'>
+        <div className='products-caption'>
           <h1 className='products-mainCategory'>
             {(category) ? firstLetterToUpperCase(category) :
               (search) ? 'Поиск' : 'Все товары'}
@@ -65,26 +67,15 @@ class ProductsList extends Component {
           {
             (category || search) &&
             <span>
-              <NavLink to={'/'} className='products-list-goBack'>
+              <Link to={'/'} className='products-goBack'>
                 <FontAwesomeIcon icon={faLongArrowAltLeft} />
-              </NavLink>
+              </Link>
             </span>
           }
         </div>
         {isFetching && products.length === 0 && <h2>Loading...</h2>}
         {!isFetching && products.length === 0 && <h2>Нет товаров</h2>}
-        {products.length > 0 && (
-          <ul className='products-list'>
-            {
-              products.map(product =>
-                <Product
-                  key={product._id}
-                  {...product}
-                />
-              )
-            }
-          </ul>
-        )}
+        <ProductsList products={products}/>
         <Pagination
           allElements={sortedProducts}
           currentPage={currentPage}
@@ -94,5 +85,28 @@ class ProductsList extends Component {
   }
 }
 
+Products.propTypes = {
+  products: PropTypes.array,
+  sortedProducts: PropTypes.array,
+  category: PropTypes.string,
+  search: PropTypes.string,
+  location: PropTypes.object,
+  params: PropTypes.object,
+  currentPage: PropTypes.number,
+  isFetching: PropTypes.bool,
+  isMainDataFetched: PropTypes.bool,
+}
 
-export default ProductsList
+Products.defaultProps = {
+  products: [],
+  sortedProducts: [],
+  category: "",
+  search: "",
+  location: {},
+  params: {},
+  currentPage: 1,
+  isFetching: false,
+  isMainDataFetched: false,
+}
+
+export default Products

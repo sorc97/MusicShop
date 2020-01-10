@@ -7,7 +7,7 @@ import {
 import ProductInfo from '../ProductInfo';
 
 const mapStateToProps = (
-  { products: { list } }, 
+  { products: { list } },
   { match: { params: { id } } }
 ) => ({
   ...findById(list, id),
