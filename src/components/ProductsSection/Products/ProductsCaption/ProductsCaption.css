@@ -1,0 +1,16 @@
+.products-caption{
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.products-mainCategory{
+  margin: 0px;
+  font-weight: 300;
+}
+
+.products-goBack {
+  margin-left: 20px;
+  font-size: 35px;
+  cursor: pointer;
+  color: #000;
+}

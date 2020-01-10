@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ProductsList from './ProductsList/ProductsList'
+import ProductsCaption from './ProductsCaption/ProductsCaption'
 import Pagination from '../../Pagination'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
-import { firstLetterToUpperCase } from '../../../lib/array-helpers'
 import { initialProductsPerPage } from '../../../lib/config'
 import './Products.css'
 
@@ -59,23 +56,12 @@ class Products extends Component {
 
     return (
       <div className='products-wrapper'>
-        <div className='products-caption'>
-          <h1 className='products-mainCategory'>
-            {(category) ? firstLetterToUpperCase(category) :
-              (search) ? 'Поиск' : 'Все товары'}
-          </h1>
-          {
-            (category || search) &&
-            <span>
-              <Link to={'/'} className='products-goBack'>
-                <FontAwesomeIcon icon={faLongArrowAltLeft} />
-              </Link>
-            </span>
-          }
-        </div>
+        <ProductsCaption 
+          category={category} 
+          search={search} />
         {isFetching && products.length === 0 && <h2>Loading...</h2>}
         {!isFetching && products.length === 0 && <h2>Нет товаров</h2>}
-        <ProductsList products={products}/>
+        <ProductsList products={products} />
         <Pagination
           allElements={sortedProducts}
           currentPage={currentPage}

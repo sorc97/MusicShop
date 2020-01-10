@@ -1,0 +1,33 @@
+.cart-table{
+  width: 100%; 
+  display: grid;
+  grid-template-rows: [header] 50px [content] minmax(200px, auto) 
+    [footer] 50px;
+}
+
+.table-header {
+  grid-row: header;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+}
+
+.table-header>span {
+  align-self: center;
+  justify-self: center;
+  font-weight: bold;
+}
+
+.table-header>span:nth-of-type(1) {
+  background-color: transparent;
+}
+
+.cart-products-list {
+  grid-row: content;
+}
+
+@media screen and (max-width: 575px) {
+  .table-header {
+    display: none;
+  }
+}

@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
-import Cart from '../Cart'
+import Cart from './Cart'
 import {
   removeFromCart,
   changeCartProductAmount
 } from '../../redux/actionCreators'
 
 const CartContainer = connect(
-  ({ products: {cart} }) => ({
-    products: cart
+  ({ products: { cart } }) => ({
+    productsList: cart
   }),
   dispatch => ({
     removeProduct(id) {

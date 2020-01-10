@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductsSection from '../ProductsSection/ProductsSection'
 import AboutProduct from '../containers/AboutProduct'
-import CartContainer from '../containers/CartContainer'
+import CartContainer from '../Cart/CartContainer'
 import PageTemplate from '../PageTemplate/PageTemplate'
 import Error404 from '../Error404'
 import { Route, Switch } from 'react-router-dom'
