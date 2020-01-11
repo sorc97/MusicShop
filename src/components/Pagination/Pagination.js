@@ -12,8 +12,9 @@ const Pagination = ({
   let paginationLength = Math.ceil(allElements.length / elemPerPage);
   let search = location.search;  //current search query
   let pages = [...Array(paginationLength)].map((item, i) => i + 1);  //Pages amount
-
+  
   return (
+    (currentPage <= paginationLength) &&
     <ul className='pagination-list'>
       {
         pages.map(number => {

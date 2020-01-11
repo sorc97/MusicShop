@@ -1,7 +1,6 @@
 import C from './constants'
 import { 
   initialCart, 
-  initialProductsPerPage 
 } from '../lib/config'
 
 export const product = (state = {}, action = {}) => {
@@ -36,7 +35,6 @@ export const products = (
   state = {
     list: [],
     cart: initialCart,
-    productsPerPage: initialProductsPerPage,
     isFetching: false,
     isMainDataFetched: false
   }, 

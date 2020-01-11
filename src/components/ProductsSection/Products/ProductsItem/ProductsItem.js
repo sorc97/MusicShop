@@ -47,7 +47,7 @@ class ProductsItem extends Component {
             </Link>
           </h1>
         </div>
-        <h2 className='product-price'>{price.toLocaleString()} р.</h2>
+        <h2 className='product-price'>{price} р.</h2>
         <AddToCartButton 
           style={buttonStyle} 
           id={_id}
@@ -61,7 +61,7 @@ ProductsItem.propTypes = {
   name: PropTypes.string, 
   category: PropTypes.string, 
   img: PropTypes.string, 
-  price: PropTypes.number, 
+  price: PropTypes.string, 
   _id: PropTypes.string,
 }
 
@@ -69,7 +69,7 @@ ProductsItem.defaultProps = {
   name: "Unknown", 
   category: "Unknown", 
   img: "", 
-  price: 0, 
+  price: "0", 
   _id: "0",
 }
 

@@ -1,5 +1,4 @@
 .search-form{
-  border: 3px solid black;
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
@@ -19,6 +18,7 @@
 
 .search-form>[name='query']{
   flex-grow: 1;
+  border: 3px solid black;
 }
 
 .search-button{

@@ -4,7 +4,7 @@ import CartTable from './CartTable/CartTable'
 import './Cart.css'
 
 const Cart = ({
-  productsList, removeProduct, changeAmount
+  productsList, removeProduct, changeAmount, finalPrice
 }) =>
   <main className='cart'>
     <div className='container'>
@@ -16,6 +16,7 @@ const Cart = ({
             removeProduct={removeProduct}
             changeAmount={changeAmount}
             products={productsList}
+            finalPrice={finalPrice.toLocaleString()}
           /> 
         }
       </div>

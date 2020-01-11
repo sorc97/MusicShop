@@ -4,7 +4,7 @@ import CartTableItem from '../CartTableItem/CartTableItem'
 import './CartTable.css'
 
 const CartTable = ({
-  products, removeProduct, changeAmount
+  products, removeProduct, changeAmount, finalPrice
 }) =>
   <div className='cart-table'>
     <div className='table-header'>
@@ -19,6 +19,7 @@ const CartTable = ({
         <CartTableItem
           key={product._id}
           {...product}
+          price={product.price.toLocaleString()}
           removeProduct={removeProduct}
           changeAmount={changeAmount}
         />
@@ -26,23 +27,21 @@ const CartTable = ({
     </ul>
     <div className='cart-totalPrice'>
       <h3>
-        Итоговая цена: {
-          products.reduce((prev, next) =>
-            prev + next.price * next.amount, 0
-          )
-        } р.
-        </h3>
+        Итоговая цена: {finalPrice} р.
+      </h3>
     </div>
   </div>
 
 CartTable.propTypes = {
   products: PropTypes.array,
+  finalPrice: PropTypes.string,
   removeProduct: PropTypes.func,
-  changeAmount: PropTypes.func
+  changeAmount: PropTypes.func,
 }
 
 CartTable.defaultProps = {
   products: [],
+  finalPrice: "0",
   removeProduct: () => { },
   changeAmount: () => { }
 }

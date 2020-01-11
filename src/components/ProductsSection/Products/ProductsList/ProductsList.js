@@ -11,6 +11,7 @@ const ProductsList = ({ products = [] }) =>
           <ProductsItem
             key={product._id}
             {...product}
+            price={product.price.toLocaleString()}
           />
         )
       }

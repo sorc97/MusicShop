@@ -7,7 +7,10 @@ import {
 
 const CartContainer = connect(
   ({ products: { cart } }) => ({
-    productsList: cart
+    productsList: cart,
+    finalPrice: cart.reduce((prev, next) =>
+      prev + next.price * next.amount, 0
+    )
   }),
   dispatch => ({
     removeProduct(id) {

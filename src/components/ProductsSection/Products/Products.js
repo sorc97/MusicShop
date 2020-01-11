@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ProductsList from './ProductsList/ProductsList'
 import ProductsCaption from './ProductsCaption/ProductsCaption'
 import Pagination from '../../Pagination/Pagination'
-import { initialProductsPerPage } from '../../../lib/config'
+import { productsPerPage } from '../../../lib/config'
 import './Products.css'
 
 
@@ -65,7 +65,7 @@ class Products extends Component {
         <Pagination
           allElements={sortedProducts}
           currentPage={currentPage}
-          elemPerPage={initialProductsPerPage} />
+          elemPerPage={productsPerPage} />
       </div>
     )
   }

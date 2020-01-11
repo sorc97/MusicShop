@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import Products from './Products'
+import queryString from 'query-string'
 import { withRouter } from 'react-router-dom'
 import {
   fetchAllProducts,
@@ -10,14 +12,12 @@ import {
   filterProducts,
   searchByMultipleFields
 } from '../../../lib/array-helpers'
-import queryString from 'query-string'
-import Products from './Products'
+import { productsPerPage } from '../../../lib/config'
 
 const mapStateToProps = (
   {
     products: {
       list,
-      productsPerPage,
       isFetching,
       isMainDataFetched
     }

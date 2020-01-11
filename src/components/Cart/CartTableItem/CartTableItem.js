@@ -19,7 +19,7 @@ const CartTableItem = ({
         src={img} />
     </div>
     <h2 className='cart-product-title'>{name}</h2>
-    <h3 className='cart-product-price'>{price.toLocaleString()} р.</h3>
+    <h3 className='cart-product-price'>{price} р.</h3>
     <Counter
       countUp={() => changeAmount(_id, '+')}
       countDown={() => changeAmount(_id, '-')}
@@ -36,7 +36,7 @@ CartTableItem.propTypes = {
   _id: PropTypes.string,
   img: PropTypes.string,
   name: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
   amount: PropTypes.number,
   changeAmount: PropTypes.func,
   removeProduct: PropTypes.func
@@ -46,7 +46,7 @@ CartTableItem.defaultProps = {
   _id: "",
   img: "",
   name: "Unknown",
-  price: 0,
+  price: "0",
   amount: 0,
   changeAmount: () => { },
   removeProduct: () => { }
