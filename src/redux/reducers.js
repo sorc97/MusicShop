@@ -1,11 +1,11 @@
 import C from './constants'
-import { 
-  initialCart, 
+import {
+  initialCart,
 } from '../lib/config'
 
 export const product = (state = {}, action = {}) => {
 
-  switch(action.type) {
+  switch (action.type) {
     case C.ADD_TO_CART:
       return {
         ...state,
@@ -19,13 +19,13 @@ export const product = (state = {}, action = {}) => {
       }
 
       return (state._id !== action.id) ?
-        state:
+        state :
         {
           ...state,
           amount: methods[action.operator](state.amount)
         }
     }
-      
+
     default:
       return state;
   }
@@ -36,13 +36,13 @@ export const products = (
     list: [],
     cart: initialCart,
     isFetching: false,
-    isMainDataFetched: false
-  }, 
+    fetchedBy: ""
+  },
   action
 ) => {
   let { cart, list } = state;
 
-  switch(action.type) {
+  switch (action.type) {
     case C.REQUEST_PRODUCTS:
       return {
         ...state,
@@ -56,18 +56,17 @@ export const products = (
         list: Array.isArray(action.products) ?
           action.products : [action.products],
         isFetching: false,
-        isMainDataFetched: !!action.isMain
+        fetchedBy: action.fetchedBy,
       }
-    
+
     case C.FETCH_ALL_PRODUCTS:
       console.log('HI')
       return {
-        ...state,
-        isMainDataFetched: true
+        ...state
       }
 
     case C.ADD_TO_CART: {
-      let newProduct = list.filter(item => 
+      let newProduct = list.filter(item =>
         item._id === action.id
       )[0]
 
@@ -98,8 +97,8 @@ export const products = (
 }
 
 export const isSideMenuOpen = (state = false, action) => {
-  switch(action.type) {
-    case C.TOGGLE_SIDE_MENU: 
+  switch (action.type) {
+    case C.TOGGLE_SIDE_MENU:
       return !state;
 
     default:

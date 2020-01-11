@@ -4,13 +4,13 @@ export const requestProducts = () => ({
   type: C.REQUEST_PRODUCTS
 }) 
 
-export const receiveProducts = (products, isMain) => ({
+export const receiveProducts = (products, fetchedBy) => ({
   type: C.RECEIVE_PRODUCTS,
   products,
-  isMain
+  fetchedBy
 })
 
-export const fetchProducts = (url, isMain) => dispatch => {
+export const fetchProducts = (url, fetchedBy) => dispatch => {
   console.log("Preparing to fentch ....");
 
   dispatch(requestProducts());
@@ -20,19 +20,21 @@ export const fetchProducts = (url, isMain) => dispatch => {
       res => res.json(),
       err => console.error('An error occurred ', err)
     )
-    .then(products => dispatch(receiveProducts(products, isMain)))
+    .then(products => dispatch(receiveProducts(products, fetchedBy)))
 }
 
 export const fetchAllProducts = () => dispatch => {
-  return dispatch(fetchProducts(`/api/products`, true));
+  return dispatch(fetchProducts(`/api/products`, 'main'));
 }
 
 export const fetchProductsByParam = (path, param) => dispatch => {
-  return dispatch(fetchProducts(`/api/products/${path}/${param}`))
+  return dispatch(
+    fetchProducts(`/api/products/${path}/${param}`, 'param')
+  );
 }
 
 export const fetchProductById = id => dispatch => {
-  return dispatch(fetchProducts(`/api/products/${id}`))
+  return dispatch(fetchProducts(`/api/products/${id}`, 'id'))
 }
 
 export const addToCart = (id) => ({

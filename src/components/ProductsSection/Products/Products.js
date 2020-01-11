@@ -10,21 +10,19 @@ import './Products.css'
 class Products extends Component {
 
   componentDidMount() {
-    const { isMainDataFetched, params, products } = this.props;
+    const { isMainDataFetched, params, fetchedBy } = this.props;
     const { fetchData, fetchByParam } = this.props;
     const paramName = Object.keys(params)[0];
 
-    // if(paramName && products.length) return;
-
+    // Preventing unnecessary fetching
+    if (paramName && fetchedBy === "param") return;
+    if (isMainDataFetched) return;
+    // Fetch by param
     if (paramName && !isMainDataFetched) {
       console.log('FETCH BY PARAMS', paramName);
       fetchByParam(paramName, params[paramName]);
       return;
     }
-
-    console.log(isMainDataFetched);
-
-    if (isMainDataFetched) return;
 
     fetchData();
     console.log('FETCHED INITIAL');
@@ -56,8 +54,8 @@ class Products extends Component {
 
     return (
       <div className='products-wrapper'>
-        <ProductsCaption 
-          category={category} 
+        <ProductsCaption
+          category={category}
           search={search} />
         {isFetching && products.length === 0 && <h2>Loading...</h2>}
         {!isFetching && products.length === 0 && <h2>Нет товаров</h2>}
@@ -81,6 +79,7 @@ Products.propTypes = {
   currentPage: PropTypes.number,
   isFetching: PropTypes.bool,
   isMainDataFetched: PropTypes.bool,
+  fetchedBy: PropTypes.string
 }
 
 Products.defaultProps = {
@@ -93,6 +92,7 @@ Products.defaultProps = {
   currentPage: 1,
   isFetching: false,
   isMainDataFetched: false,
+  fetchedBy: ""
 }
 
 export default Products

@@ -19,7 +19,7 @@ const mapStateToProps = (
     products: {
       list,
       isFetching,
-      isMainDataFetched
+      fetchedBy
     }
   }, //state
   { match: { params }, location } //props
@@ -28,11 +28,14 @@ const mapStateToProps = (
   const query = queryString.parse(location.search);
   const { category, search } = params;
   const sortValue = query.sort;
-  const currentPage = +query.page || 1;
+  //Products list
   let currentList = [...list];
+  const isMainDataFetched = (fetchedBy === "main");
   //Pagination
+  const currentPage = +query.page || 1;
   const lastElement = productsPerPage * currentPage - 1;
   const firstElement = lastElement - productsPerPage + 1;
+
   //Filter by category
   if (category && isMainDataFetched) {
     currentList = filterProducts(currentList, 'category', category)
@@ -62,7 +65,8 @@ const mapStateToProps = (
     currentPage,
     isFetching,
     isMainDataFetched,
-    params
+    params,
+    fetchedBy
   }
 }
 
