@@ -1,9 +1,9 @@
-import {compose} from 'redux'
+import { compose } from 'redux'
 
 //Find Element by id
 export const getFirstArrayElement = array => array[0]
 
-export const findElementById = (array, id) => 
+export const findElementById = (array, id) =>
   array.filter(item => item._id === id)
 
 export const findById = compose(
@@ -12,6 +12,12 @@ export const findById = compose(
 )
 
 //Sorting
+const sortHash = {
+  name: "BY_NAME",
+  highPrice: "BY_HIGH_PRICE",
+  lowPrice: "BY_LOW_PRICE"
+}
+// Sort functions
 const sortByHighPrice = field =>
   (a, b) => b[field] - a[field]
 
@@ -19,10 +25,11 @@ const sortByLowPrice = field =>
   (a, b) => a[field] - b[field]
 
 const sortByString = field =>
-  (a, b) => (a[field].toLowerCase() > b[field].toLowerCase()) ? 1: -1;
+  (a, b) => (a[field].toLowerCase() > b[field].toLowerCase()) ? 1 : -1;
 
+// Choosing which sort we sould use
 export const getSortFunction = (sortValue) => {
-  switch(sortValue){
+  switch (sortValue) {
     case "BY_NAME":
       return sortByString('name')
 
@@ -36,18 +43,23 @@ export const getSortFunction = (sortValue) => {
       return;
   }
 }
+// Get sort type by sort value 
+export const getSort = (
+  sortBy = "", hash = sortHash
+) => hash[sortBy];
 
 export const sortProducts = (products, sortValue) => compose(
   fn => [...products].sort(fn),
-  getSortFunction
+  getSortFunction,
+  getSort
 )(sortValue)
 
 //Filtering
-export const filterProducts = (array, key, filterValue) => 
+export const filterProducts = (array, key, filterValue) =>
   array.filter(item => item[key] === filterValue)
 
 //Capitalizing
-export const firstLetterToUpperCase = str => 
+export const firstLetterToUpperCase = str =>
   str.charAt(0).toUpperCase() + str.slice(1);
 
 //Get array elements by interval
@@ -60,10 +72,10 @@ export const makeSearchParam = (init) =>
 
 export const makeQuery = (name, value) => query => {
 
-  if(query.get(name)) {
+  if (query.get(name)) {
     query.set(name, value);
   } else {
-    query.append(name, value);  
+    query.append(name, value);
   }
 
   return query;
@@ -89,18 +101,18 @@ export const removeFromUrlQuery = (target, currentQuery) => compose(
 )(currentQuery)
 
 //Searching
-export const searchByField = (array, field, query) => 
-  array.filter(item => 
+export const searchByField = (array, field, query) =>
+  array.filter(item =>
     item[field].toLowerCase().includes(query.toLowerCase())
   );
 
-export const splitString = splitter => string => 
+export const splitString = splitter => string =>
   string.split(splitter);
 
-export const getElementsByFields = (array, query) => (fields) => 
-  fields.reduce((prev, current) => {  
-    if(prev.length > 0) return prev;
-    
+export const getElementsByFields = (array, query) => (fields) =>
+  fields.reduce((prev, current) => {
+    if (prev.length > 0) return prev;
+
     return searchByField(array, current, query);
   }, [])
 
