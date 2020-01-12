@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { firstLetterToUpperCase } from '../../../../lib/array-helpers'
+import { categoriesHashTable } from '../../../../lib/config'
 import  AddToCartButton from '../../../AddToCartButton/AddToCartButton'
 import './ProductsItem.css'
 

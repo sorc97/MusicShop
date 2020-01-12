@@ -2,26 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
-const CategoriesItem = ({ category = {} }) => {
-  const categoryName = Object.values(category)[0];
-  const categoryValue = Object.keys(category)[0];
-
-  return (
-    <li
-      className='categories-item'
+const CategoriesItem = ({ title = "", value = "" }) =>
+  <li className='categories-item'>
+    <NavLink
+      className='categories-link'
+      to={`/category/${value}`}
     >
-      <NavLink
-        className='categories-link'
-        to={`/category/${categoryValue}`}
-      >
-        {categoryName}
-      </NavLink>
-    </li>
-  )
-}
+      {title}
+    </NavLink>
+  </li>
+
 
 CategoriesItem.propTypes = {
-  category: PropTypes.object
+  title: PropTypes.string,
+  value: PropTypes.string
 }
 
 export default CategoriesItem

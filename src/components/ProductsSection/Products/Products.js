@@ -6,27 +6,30 @@ import Pagination from '../../Pagination/Pagination'
 import { productsPerPage } from '../../../lib/config'
 import './Products.css'
 
-
 class Products extends Component {
 
   componentDidMount() {
-    const { isMainDataFetched, params, fetchedBy, categoryName } = this.props;
+    const {
+      isMainDataFetched,
+      params,
+      fetchedBy,
+      categoryName
+    } = this.props;
     const { fetchData, fetchByParam } = this.props;
     const paramName = Object.keys(params)[0];
 
     // Preventing unnecessary fetching
     if (paramName && fetchedBy === "param") return;
     if (isMainDataFetched) return;
-    
+
     // Fetch by param
     if (paramName && !isMainDataFetched) {
       console.log('FETCH BY PARAMS', paramName);
-      if(paramName === 'category') {
+      if (paramName === 'category') {
         fetchByParam(paramName, categoryName);
-        return;
+      } else {
+        fetchByParam(paramName, params[paramName]);
       }
-      // console.log(params[paramName]);
-      fetchByParam(paramName, params[paramName]);
       return;
     }
 
@@ -36,16 +39,12 @@ class Products extends Component {
 
   componentDidUpdate(prevProps) {
     const { location, isMainDataFetched } = this.props;
+    const { location: { pathname: prevPathname } } = prevProps;
 
-    if (prevProps.location.pathname !== location.pathname && !isMainDataFetched) {
-      console.log('FROM UPDATE');
-      this.fetchAllProducts();
+    if (prevPathname !== location.pathname && !isMainDataFetched) {
+      const { fetchData } = this.props;
+      fetchData();
     }
-  }
-
-  fetchAllProducts() {
-    const { fetchData } = this.props;
-    fetchData();
   }
 
   render() {
@@ -76,11 +75,12 @@ class Products extends Component {
     )
   }
 }
-
+// PropTypes
 Products.propTypes = {
   products: PropTypes.array,
   sortedProducts: PropTypes.array,
   category: PropTypes.string,
+  categoryName: PropTypes.string,
   search: PropTypes.string,
   location: PropTypes.object,
   params: PropTypes.object,
@@ -94,6 +94,7 @@ Products.defaultProps = {
   products: [],
   sortedProducts: [],
   category: "",
+  categoryName: "",
   search: "",
   location: {},
   params: {},

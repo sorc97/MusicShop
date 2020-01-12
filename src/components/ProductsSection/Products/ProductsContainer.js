@@ -14,7 +14,7 @@ import {
 } from '../../../lib/array-helpers'
 import { 
   productsPerPage, 
-  categoriesHash 
+  categoriesHashTable 
 } from '../../../lib/config'
 
 const mapStateToProps = (
@@ -31,7 +31,7 @@ const mapStateToProps = (
   const query = queryString.parse(location.search);
   const { category, search } = params;
   const sortValue = query.sort;
-  const categoryName = categoriesHash[category] || "";
+  const categoryName = categoriesHashTable[category] || "";
   // Products data
   let currentList = [...list];
   const isMainDataFetched = (fetchedBy === "main");

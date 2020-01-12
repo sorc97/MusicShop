@@ -6,30 +6,8 @@ export const sortList = [
   { 'По имени': 'name' }
 ]
 
-/* export const categoriesList = [
-  'Электрогитары',
-  'Акустические гитары',
-  'Бас гитары',
-  'Клавишные',
-  'Ударные',
-  'Микрофоны',
-  'Звуковое оборудование',
-  'Dj-оборудование'
-] */
-
-/* export const categoriesList = [
-  {'electroGuitars': 'Электрогитары'},
-  {'acousticGuitars': 'Акустические гитары'},
-  {'bassGuitars': 'Бас гитары'},
-  {'keyboards': 'Клавишные'},
-  {'drums': 'Ударные'},
-  {'microphones': 'Микрофоны'},
-  {'soundEquipment': 'Звуковое оборудование'},
-  {'djEquipment': 'Dj-оборудование'}
-] */
-
 // Key to url, value to display
-export const categoriesHash = {
+export const categoriesHashTable = {
   'electroGuitars': 'Электрогитары',
   'acousticGuitars': 'Акустические гитары',
   'bassGuitars': 'Бас гитары',
@@ -42,12 +20,12 @@ export const categoriesHash = {
 // List of categories for displaying
 export let categoriesList = [];
 
-for (let key in categoriesHash) {
+for (let key in categoriesHashTable) {
   let newObj = {
-    [key]: categoriesHash[key]
+    [key]: categoriesHashTable[key]
   };
-  // categoriesList.push(newObj);
-  categoriesList = [...categoriesList, newObj]
+
+  categoriesList = [...categoriesList, newObj];
 }
 
 export const initialCart =
