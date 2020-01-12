@@ -12,7 +12,10 @@ import {
   filterProducts,
   searchByMultipleFields
 } from '../../../lib/array-helpers'
-import { productsPerPage } from '../../../lib/config'
+import { 
+  productsPerPage, 
+  categoriesHash 
+} from '../../../lib/config'
 
 const mapStateToProps = (
   {
@@ -28,7 +31,8 @@ const mapStateToProps = (
   const query = queryString.parse(location.search);
   const { category, search } = params;
   const sortValue = query.sort;
-  //Products list
+  const categoryName = categoriesHash[category] || "";
+  // Products data
   let currentList = [...list];
   const isMainDataFetched = (fetchedBy === "main");
   //Pagination
@@ -38,7 +42,10 @@ const mapStateToProps = (
 
   //Filter by category
   if (category && isMainDataFetched) {
-    currentList = filterProducts(currentList, 'category', category)
+    console.log(categoryName);
+    currentList = filterProducts(
+      currentList, 'category', categoryName.toLowerCase()
+    )
   }
   //Elements searching
   if (search && isMainDataFetched) {
@@ -60,6 +67,7 @@ const mapStateToProps = (
     products: paginatedProducts,
     sortedProducts,
     category,
+    categoryName,
     search,
     location,
     currentPage,

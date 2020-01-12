@@ -10,16 +10,22 @@ import './Products.css'
 class Products extends Component {
 
   componentDidMount() {
-    const { isMainDataFetched, params, fetchedBy } = this.props;
+    const { isMainDataFetched, params, fetchedBy, categoryName } = this.props;
     const { fetchData, fetchByParam } = this.props;
     const paramName = Object.keys(params)[0];
 
     // Preventing unnecessary fetching
     if (paramName && fetchedBy === "param") return;
     if (isMainDataFetched) return;
+    
     // Fetch by param
     if (paramName && !isMainDataFetched) {
       console.log('FETCH BY PARAMS', paramName);
+      if(paramName === 'category') {
+        fetchByParam(paramName, categoryName);
+        return;
+      }
+      // console.log(params[paramName]);
       fetchByParam(paramName, params[paramName]);
       return;
     }
@@ -50,12 +56,14 @@ class Products extends Component {
       isFetching,
       sortedProducts,
       currentPage,
+      categoryName
     } = this.props;
 
     return (
       <div className='products-wrapper'>
         <ProductsCaption
           category={category}
+          categoryName={categoryName}
           search={search} />
         {isFetching && products.length === 0 && <h2>Loading...</h2>}
         {!isFetching && products.length === 0 && <h2>Нет товаров</h2>}

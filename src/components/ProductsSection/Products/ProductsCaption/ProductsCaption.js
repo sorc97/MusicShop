@@ -3,20 +3,27 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
-import { firstLetterToUpperCase } from '../../../../lib/array-helpers'
-import { categoriesList } from '../../../../lib/config'
 import './ProductsCaption.css'
 
-const ProductsCaption = ({ category = "", search = "" }) => {
-  /* const categoryText = categoriesList.filter(
-    item => item.toLowerCase() === category
-  )[0] || "категория не найдена"; */
+const ProductsCaption = ({ 
+  category = "", 
+  categoryName = "",
+  search = "" 
+}) => {
   
+  let caption = "Все товары";
+
+  if(category) {
+    caption = categoryName || "Категория не найдена"; 
+
+  } else if (search) {
+    caption = "Поиск";
+  }
+
   return (
     <div className='products-caption'>
       <h1 className='products-mainCategory'>
-        {(category) ? firstLetterToUpperCase(category) :
-          (search) ? 'Поиск' : 'Все товары'}
+        {caption}
       </h1>
       {
         (category || search) &&
@@ -32,6 +39,7 @@ const ProductsCaption = ({ category = "", search = "" }) => {
 
 ProductsCaption.propTypes = {
   category: PropTypes.string,
+  categoryName: PropTypes.string,
   search: PropTypes.string
 }
 

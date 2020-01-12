@@ -1,25 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
+import CategoriesItem from './CategoriesItem/CategoriesItem'
 import './Categories.css'
 
 const Categories = ({
   categoriesList = []
-}) =>
+}) => 
   <aside className='categories'>
     <ul className='categories-list'>
       {
         categoriesList.map((category, i) => 
-          <li key={i} 
-            className='categories-item'
-          >
-            <NavLink
-              className='categories-link'
-              to={`/category/${category.toLowerCase()}`}
-            >
-              {category}
-            </NavLink>
-          </li>
+          <CategoriesItem category={category} key={i}/>
         )
       }
     </ul>

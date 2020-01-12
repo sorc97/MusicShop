@@ -1,12 +1,12 @@
 export const logo = 'MusicShop';
 
 export const sortList = [
-  {'По возрастанию цены': 'lowPrice'},
-  {'По убыванию цены': 'highPrice'},
-  {'По имени': 'name'}
+  { 'По возрастанию цены': 'lowPrice' },
+  { 'По убыванию цены': 'highPrice' },
+  { 'По имени': 'name' }
 ]
 
-export const categoriesList = [
+/* export const categoriesList = [
   'Электрогитары',
   'Акустические гитары',
   'Бас гитары',
@@ -15,9 +15,42 @@ export const categoriesList = [
   'Микрофоны',
   'Звуковое оборудование',
   'Dj-оборудование'
-]
+] */
 
-export const initialCart = 
+/* export const categoriesList = [
+  {'electroGuitars': 'Электрогитары'},
+  {'acousticGuitars': 'Акустические гитары'},
+  {'bassGuitars': 'Бас гитары'},
+  {'keyboards': 'Клавишные'},
+  {'drums': 'Ударные'},
+  {'microphones': 'Микрофоны'},
+  {'soundEquipment': 'Звуковое оборудование'},
+  {'djEquipment': 'Dj-оборудование'}
+] */
+
+// Key to url, value to display
+export const categoriesHash = {
+  'electroGuitars': 'Электрогитары',
+  'acousticGuitars': 'Акустические гитары',
+  'bassGuitars': 'Бас гитары',
+  'keyboards': 'Клавишные',
+  'drums': 'Ударные',
+  'microphones': 'Микрофоны',
+  'soundEquipment': 'Звуковое оборудование',
+  'djEquipment': 'Dj-оборудование'
+}
+// List of categories for displaying
+export let categoriesList = [];
+
+for (let key in categoriesHash) {
+  let newObj = {
+    [key]: categoriesHash[key]
+  };
+  // categoriesList.push(newObj);
+  categoriesList = [...categoriesList, newObj]
+}
+
+export const initialCart =
   (localStorage['musicShop-cart']) ?
     JSON.parse(localStorage['musicShop-cart']) :
     []

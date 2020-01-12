@@ -7,6 +7,7 @@
   font-weight: bold;
   background-color: #20a520;
   outline: 1px solid #20a520;
+  font-family: 'Roboto', sans-serif;
 }
 
 .product-button:hover{
