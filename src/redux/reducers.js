@@ -50,19 +50,12 @@ export const products = (
       }
 
     case C.RECEIVE_PRODUCTS:
-      console.log(action.isMain);
       return {
         ...state,
         list: Array.isArray(action.products) ?
           action.products : [action.products],
         isFetching: false,
         fetchedBy: action.fetchedBy,
-      }
-
-    case C.FETCH_ALL_PRODUCTS:
-      console.log('HI')
-      return {
-        ...state
       }
 
     case C.ADD_TO_CART: {

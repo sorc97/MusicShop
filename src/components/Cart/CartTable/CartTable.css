@@ -1,4 +1,4 @@
-.cart-table{
+.cart-table {
   width: 100%; 
   display: grid;
   grid-template-rows: [header] 50px [content] minmax(200px, auto) 
@@ -29,5 +29,9 @@
 @media screen and (max-width: 575px) {
   .table-header {
     display: none;
+  }
+
+  .cart-table {
+    grid-template-rows: [header] 50px [content] minmax(200px, auto);
   }
 }

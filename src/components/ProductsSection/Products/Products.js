@@ -6,7 +6,6 @@ import Pagination from '../../Pagination/Pagination'
 import { productsPerPage } from '../../../lib/config'
 import './Products.css'
 
-
 class Products extends Component {
 
   componentDidMount() {

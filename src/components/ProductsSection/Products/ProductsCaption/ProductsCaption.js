@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
-import { firstLetterToUpperCase } from '../../../../lib/helpers'
 import './ProductsCaption.css'
 
 const ProductsCaption = ({
@@ -21,12 +20,9 @@ const ProductsCaption = ({
     caption = "Поиск";
   }
   
-
   return (
     <div className='products-caption'>
       <h1 className='products-mainCategory'>
-        {/* {(category) ? firstLetterToUpperCase(category) :
-          (search) ? 'Поиск' : 'Все товары'} */}
         {caption}
       </h1>
       {
