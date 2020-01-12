@@ -20,6 +20,7 @@
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",
+    "cyrillic-to-translit-js": "^3.0.1",
     "deep-equal": "^1.1.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.9.0",

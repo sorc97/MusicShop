@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
+import { makeURL } from '../../lib/helpers'
 import './Categories.css'
 
 const Categories = ({
@@ -15,7 +16,7 @@ const Categories = ({
           >
             <NavLink
               className='categories-link'
-              to={`/category/${category.toLowerCase()}`}
+              to={`/category/${makeURL(category)}`}
             >
               {category}
             </NavLink>

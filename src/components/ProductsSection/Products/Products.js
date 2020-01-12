@@ -10,8 +10,14 @@ import './Products.css'
 class Products extends Component {
 
   componentDidMount() {
-    const { isMainDataFetched, params, fetchedBy } = this.props;
-    const { fetchData, fetchByParam } = this.props;
+    const { 
+      isMainDataFetched, 
+      params, 
+      fetchedBy,
+      categoryName,
+      fetchData,
+      fetchByParam
+    } = this.props;
     const paramName = Object.keys(params)[0];
 
     // Preventing unnecessary fetching
@@ -20,7 +26,11 @@ class Products extends Component {
     // Fetch by param
     if (paramName && !isMainDataFetched) {
       console.log('FETCH BY PARAMS', paramName);
-      fetchByParam(paramName, params[paramName]);
+      if(paramName === 'category') {
+        fetchByParam(paramName, categoryName);
+      } else {
+        fetchByParam(paramName, params[paramName]);
+      }
       return;
     }
 
@@ -29,9 +39,10 @@ class Products extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { location, isMainDataFetched } = this.props;
+    const { pathname, isMainDataFetched } = this.props;
+    const { pathname: prevPathname } = prevProps;
 
-    if (prevProps.location.pathname !== location.pathname && !isMainDataFetched) {
+    if (prevPathname !== pathname && !isMainDataFetched) {
       console.log('FROM UPDATE');
       this.fetchAllProducts();
     }
@@ -46,6 +57,7 @@ class Products extends Component {
     const {
       products,
       category,
+      categoryName,
       search,
       isFetching,
       sortedProducts,
@@ -56,6 +68,7 @@ class Products extends Component {
       <div className='products-wrapper'>
         <ProductsCaption
           category={category}
+          categoryName={categoryName}
           search={search} />
         {isFetching && products.length === 0 && <h2>Loading...</h2>}
         {!isFetching && products.length === 0 && <h2>Нет товаров</h2>}
@@ -73,8 +86,10 @@ Products.propTypes = {
   products: PropTypes.array,
   sortedProducts: PropTypes.array,
   category: PropTypes.string,
+  categoryName: PropTypes.string,
+  category: PropTypes.string,
   search: PropTypes.string,
-  location: PropTypes.object,
+  pathname: PropTypes.string,
   params: PropTypes.object,
   currentPage: PropTypes.number,
   isFetching: PropTypes.bool,
@@ -86,8 +101,9 @@ Products.defaultProps = {
   products: [],
   sortedProducts: [],
   category: "",
+  categoryName: "",
   search: "",
-  location: {},
+  pathname: "",
   params: {},
   currentPage: 1,
   isFetching: false,

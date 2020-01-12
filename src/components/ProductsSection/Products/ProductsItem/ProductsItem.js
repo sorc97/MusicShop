@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import AddToCartButton from '../../../AddToCartButton/AddToCartButton'
+import CategoryLink from '../../../CategoryLink/CategoryLink'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { firstLetterToUpperCase } from '../../../../lib/array-helpers'
-import  AddToCartButton from '../../../AddToCartButton/AddToCartButton'
 import './ProductsItem.css'
 
 const buttonStyle = {
@@ -35,12 +35,10 @@ class ProductsItem extends Component {
           </Link>
         </div>
         <div className='product-caption'>
-          <Link 
+          <CategoryLink 
             className='product-category' 
-            to={`/category/${category.toLowerCase()}`}
-          >
-            {firstLetterToUpperCase(category)}
-          </Link>
+            category={category} 
+          />
           <h1 className='product-name'>
             <Link to={`/product/${_id}`}>
               {name}

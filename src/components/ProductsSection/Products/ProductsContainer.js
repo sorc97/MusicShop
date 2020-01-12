@@ -11,8 +11,11 @@ import {
   getElementsFromArrayByInterval,
   filterProducts,
   searchByMultipleFields
-} from '../../../lib/array-helpers'
-import { productsPerPage } from '../../../lib/config'
+} from '../../../lib/helpers'
+import { 
+  productsPerPage, 
+  urlCategories 
+} from '../../../lib/config'
 
 const mapStateToProps = (
   {
@@ -28,6 +31,7 @@ const mapStateToProps = (
   const query = queryString.parse(location.search);
   const { category, search } = params;
   const sortValue = query.sort;
+  const categoryName = urlCategories[category] || "";
   //Products list
   let currentList = [...list];
   const isMainDataFetched = (fetchedBy === "main");
@@ -38,7 +42,9 @@ const mapStateToProps = (
 
   //Filter by category
   if (category && isMainDataFetched) {
-    currentList = filterProducts(currentList, 'category', category)
+    currentList = filterProducts(
+      currentList, 'category', categoryName.toLowerCase()
+    );
   }
   //Elements searching
   if (search && isMainDataFetched) {
@@ -60,8 +66,9 @@ const mapStateToProps = (
     products: paginatedProducts,
     sortedProducts,
     category,
+    categoryName,
     search,
-    location,
+    pathname: location.pathname,
     currentPage,
     isFetching,
     isMainDataFetched,

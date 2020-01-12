@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { findById } from '../../lib/array-helpers'
+import { findById } from '../../lib/helpers'
 import {
   fetchProductById,
   addToCart

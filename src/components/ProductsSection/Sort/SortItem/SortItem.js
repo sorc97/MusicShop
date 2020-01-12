@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import queryString from 'query-string'
 import { Link } from 'react-router-dom'
-import { makeUrlQuery } from '../../../../lib/array-helpers'
+import { makeUrlQuery } from '../../../../lib/helpers'
 import './SortItem.css'
 
 const SortItem = ({

@@ -1,4 +1,5 @@
 import { compose } from 'redux'
+import cyrillicToTranslit from 'cyrillic-to-translit-js'
 
 //Find Element by id
 export const getFirstArrayElement = array => array[0]
@@ -120,3 +121,7 @@ export const searchByMultipleFields = (array, fields, query) => compose(
   getElementsByFields(array, query),
   splitString(' ')
 )(fields)
+
+// URL Methods 
+export const makeURL = (string) => 
+  cyrillicToTranslit().transform(string, '-').toLowerCase()

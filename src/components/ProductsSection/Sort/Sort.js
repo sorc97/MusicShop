@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import SortItem from './SortItem/SortItem'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
-import { removeFromUrlQuery } from '../../../lib/array-helpers'
+import { removeFromUrlQuery } from '../../../lib/helpers'
 import './Sort.css'
 
 const Sort = ({
