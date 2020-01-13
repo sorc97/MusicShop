@@ -1,5 +1,5 @@
 import C from './constants'
-
+// Fetch actions
 export const requestProducts = () => ({
   type: C.REQUEST_PRODUCTS
 }) 
@@ -37,6 +37,7 @@ export const fetchProductById = id => dispatch => {
   return dispatch(fetchProducts(`/api/products/${id}`, 'id'))
 }
 
+// Cart actions
 export const addToCart = (id) => ({
   type: C.ADD_TO_CART,
   id

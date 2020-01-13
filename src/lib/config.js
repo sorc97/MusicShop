@@ -18,7 +18,7 @@ export const categoriesList = [
   'Звуковое оборудование',
   'Dj-оборудование'
 ]
-
+// Categories URL based on the categories list
 export let urlCategories = {};
 
 categoriesList.forEach(item => {
@@ -28,8 +28,7 @@ categoriesList.forEach(item => {
   }
 })
 
-console.log(urlCategories);
-
+// Initial cart state
 export const initialCart = 
   (localStorage['musicShop-cart']) ?
     JSON.parse(localStorage['musicShop-cart']) :

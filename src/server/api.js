@@ -20,14 +20,19 @@ router.get('/products/category/:category', (req, res) => {
 
 router.get('/products/search/:query', (req, res) => {
   let { query } = req.params;
-  // let expQueryForName = new RegExp(query.toUpperCase());
+  let nameExpQuery = new RegExp(query.toUpperCase());
+  let categoryExpQuery = new RegExp(query.toUpperCase());
 
-  Product.find({ name: new RegExp(query.toUpperCase()) })
+  Product.find({ // Find by name field
+    name: nameExpQuery 
+  })
     .then(products => {
       if (products.length) {
         res.send(products);
-      } else {
-        Product.find({ category: new RegExp(query.toLowerCase()) })
+      } else {  // Find by category field
+        Product.find({ 
+          category: categoryExpQuery 
+        })
           .then(products => res.send(products))
       }
     })

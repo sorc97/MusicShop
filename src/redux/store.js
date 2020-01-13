@@ -2,10 +2,10 @@ import {
   createStore,
   applyMiddleware,
   combineReducers
-} from 'redux';
-import thunk from 'redux-thunk';
-import { products, isSideMenuOpen } from './reducers';
-import { composeWithDevTools } from 'redux-devtools-extension';
+} from 'redux'
+import thunk from 'redux-thunk'
+import { products, isSideMenuOpen } from './reducers'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const store = createStore(
   combineReducers({
@@ -22,4 +22,4 @@ store.subscribe(() =>
   )
 )
 
-export default store;
+export default store
