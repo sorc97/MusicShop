@@ -7,17 +7,22 @@
   height: 100%;
   z-index: 10;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.78);
+  background-color: rgba(0, 0, 0, 0.91);
   animation: slideRight .2s ease;
 }
 
 .side-menu>.categories{
+  position: static;
   display: inline-block;
   width: 100%;
   padding: 0px;
   text-align: center;
   max-width: none;
   align-self: center;
+}
+
+.side-menu>.categories-list {
+  background-color: transparent;
 }
 
 .side-menu-close {

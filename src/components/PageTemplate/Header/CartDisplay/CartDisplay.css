@@ -13,20 +13,24 @@
 }
 
 .cart-elementsCounter{
-  margin-left: 10px;
+  display: inline-block;
+  margin-left: 5px;
+  min-width: 30px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .cart-link-wrapper:hover .cart-link{
   color: #fff;
 }
 
-.cart-elementsCounter{
-  font-weight: bold;
+.cart-title{
+  margin-left: 5px;
 }
 
 /* Media Queries */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px){
   .cart-title{
     display: none;
   }

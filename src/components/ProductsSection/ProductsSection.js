@@ -6,7 +6,7 @@ import { categoriesList, sortList } from '../../lib/config'
 import './ProductsSection.css'
 
 const ProductsSection = () =>
-  <main className='main-wrapper'>
+  <main className='catalog'>
     <div className='container'>
       <div className='main-inner'>
         <Categories 

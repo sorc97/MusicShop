@@ -27,7 +27,7 @@
   color: #fff;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .search-form{
     margin: 20px 0px;
     width: 100%;

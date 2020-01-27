@@ -4,7 +4,7 @@
   font-size: 25px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .header-menu {
     display: inline-block;
   }

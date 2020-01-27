@@ -1,8 +1,22 @@
+.catalog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.catalog>.container {
+  margin: 0px;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+}
+
 .main-inner{
   position: relative;
   display: flex;
-  /* padding: 30px; */
   padding-top: 30px;
+  width: 100%;
+  flex-grow: 1;
 }
 
 .products{

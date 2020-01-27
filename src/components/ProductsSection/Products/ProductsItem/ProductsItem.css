@@ -21,7 +21,7 @@
 .product-name{
   /* font-size: 25px; */
   font-size: 1.4rem;
-  margin-top: 0px;
+  margin: 5px 0px;
 }
 
 .product-name a{
@@ -61,10 +61,23 @@
 
 @media screen and (max-width: 420px) {
   .product{
-    min-height: 350px;
+    /* min-height: 350px; */
   }
   
   .img-wrapper img {
     max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .product-category {
+    font-size: 16px;
   }
 }
