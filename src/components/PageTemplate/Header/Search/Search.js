@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { withRouter } from 'react-router-dom'
 import './Search.css'
 
-const Search = ({ history }) => {
+const Search = ({ history = {} }) => {
   let _searchQuery;
 
   const submit = (e) => {
@@ -31,4 +32,8 @@ const Search = ({ history }) => {
   )
 }
 
-export default withRouter(Search);
+Search.propTypes = {
+  history: PropTypes.object
+}
+
+export default withRouter(Search)

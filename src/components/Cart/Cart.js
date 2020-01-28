@@ -25,8 +25,16 @@ const Cart = ({
 
 Cart.propTypes = {
   productsList: PropTypes.array,
+  finalPrice: PropTypes.number,
   removeProduct: PropTypes.func,
-  changeAmount: PropTypes.func
+  changeAmount: PropTypes.func,
 }
 
-export default Cart;
+Cart.defaultProps = {
+  productsList: [],
+  finalPrice: 0,
+  removeProduct: () => {},
+  changeAmount: () => {}
+}
+
+export default Cart

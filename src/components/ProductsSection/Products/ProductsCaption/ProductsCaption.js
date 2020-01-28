@@ -39,7 +39,8 @@ const ProductsCaption = ({
 
 ProductsCaption.propTypes = {
   category: PropTypes.string,
-  search: PropTypes.string
+  search: PropTypes.string,
+  categoryName: PropTypes.string
 }
 
 export default ProductsCaption

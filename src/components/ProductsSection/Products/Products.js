@@ -24,7 +24,6 @@ class Products extends Component {
     if (isMainDataFetched) return;
     // Fetch by param
     if (paramName && !isMainDataFetched) {
-      console.log('FETCH BY PARAMS', paramName);
       if(paramName === 'category') {
         fetchByParam(paramName, categoryName);
       } else {
@@ -34,7 +33,6 @@ class Products extends Component {
     }
 
     fetchData();
-    console.log('FETCHED INITIAL');
   }
 
   componentDidUpdate(prevProps) {
@@ -42,7 +40,6 @@ class Products extends Component {
     const { pathname: prevPathname } = prevProps;
 
     if (prevPathname !== pathname && !isMainDataFetched) {
-      console.log('FROM UPDATE');
       this.fetchAllProducts();
     }
   }

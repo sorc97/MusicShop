@@ -51,7 +51,6 @@ const mapStateToProps = (
     currentList = searchByMultipleFields(
       currentList, 'name category', search
     )
-    console.log('SEARCH', currentList);
   }
   //Products sorting
   const sortedProducts = sortProducts(currentList, sortValue);
@@ -59,8 +58,6 @@ const mapStateToProps = (
   let paginatedProducts = getElementsFromArrayByInterval(
     sortedProducts, firstElement, lastElement
   )
-
-  console.log(currentList);
 
   return {
     products: paginatedProducts,

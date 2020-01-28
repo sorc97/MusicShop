@@ -11,8 +11,6 @@ export const receiveProducts = (products, fetchedBy) => ({
 })
 
 export const fetchProducts = (url, fetchedBy) => dispatch => {
-  console.log("Preparing to fentch ....");
-
   dispatch(requestProducts());
 
   fetch(url)

@@ -15,7 +15,6 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-store.subscribe(() => console.log(store.getState()));
 store.subscribe(() =>
   localStorage['musicShop-cart'] = JSON.stringify(
     store.getState().products.cart

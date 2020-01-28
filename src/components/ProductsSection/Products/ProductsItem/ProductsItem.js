@@ -14,7 +14,7 @@ const buttonStyle = {
 
 class ProductsItem extends Component {
 
-  shouldComponentUpdate(prevProps) {
+  shouldComponentUpdate(prevProps) {  // Preventing unnecessary updates
     if (prevProps.name === this.props.name) return false;
   }
 
@@ -69,4 +69,4 @@ ProductsItem.defaultProps = {
   _id: "0",
 }
 
-export default ProductsItem;
+export default ProductsItem

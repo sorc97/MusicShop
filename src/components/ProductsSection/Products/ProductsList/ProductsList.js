@@ -4,7 +4,7 @@ import ProductsItem from '../ProductsItem/ProductsItem'
 import './ProductsList.css'
 
 const ProductsList = ({ products = [] }) =>
-  products.length > 0 && (
+  (products.length > 0) && (
     <div className='products-list-wrapper'>
       <ul className='products-list'>
         {

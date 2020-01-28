@@ -8,7 +8,7 @@ import {
 const CartContainer = connect(
   ({ products: { cart } }) => ({
     productsList: cart,
-    finalPrice: cart.reduce((prev, next) =>
+    finalPrice: cart.reduce((prev, next) =>  // Calculating final price
       prev + next.price * next.amount, 0
     )
   }),

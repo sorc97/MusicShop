@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import './Footer.css'
@@ -16,4 +16,4 @@ Footer.propTypes = {
   logo: PropTypes.string
 }
 
-export default Footer;
+export default Footer

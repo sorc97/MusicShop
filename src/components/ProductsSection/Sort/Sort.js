@@ -46,4 +46,4 @@ Sort.propTypes = {
   location: PropTypes.object
 }
 
-export default withRouter(Sort);
+export default withRouter(Sort)

@@ -36,4 +36,4 @@ SortItem.propTypes = {
   item: PropTypes.object
 }
 
-export default SortItem;
+export default SortItem

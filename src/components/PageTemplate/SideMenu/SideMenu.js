@@ -7,7 +7,7 @@ const SideMenu = ({
   isSideMenuOpen = false,
   sideMenuClickHandler = f => f,
 }) =>
-  isSideMenuOpen &&
+  (isSideMenuOpen) &&
   <div
     onClick={sideMenuClickHandler}
     className='side-menu'
@@ -19,7 +19,7 @@ const SideMenu = ({
 SideMenu.propTypes = {
   children: PropTypes.node,
   sideMenuClickHandler: PropTypes.func,
-  isSideMenuOpen: PropTypes.bool
+  isSideMenuOpen: PropTypes.bool,
 }
 
 export default SideMenu
