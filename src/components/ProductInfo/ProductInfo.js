@@ -33,7 +33,7 @@ class ProductInfo extends React.Component {
               <img src={img} alt='product img' />
             </div>
             <div className='about-section'>
-              <h1>{name}</h1>
+              <h1 className='about-name'>{name}</h1>
               <CategoryLink
                 className='about-category'
                 category={category}
@@ -43,7 +43,7 @@ class ProductInfo extends React.Component {
               </p>
             </div>
             <div className='buy-section'>
-              <h2>{price.toLocaleString()} р.</h2>
+              <h2 className='buy-price'>{price.toLocaleString()} р.</h2>
               <AddToCartButton
                 id={id}
                 style={buttonStyle}

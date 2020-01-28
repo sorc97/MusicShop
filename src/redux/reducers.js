@@ -3,6 +3,8 @@ import {
   initialCart,
 } from '../lib/config'
 
+// Product reducer
+
 export const product = (state = {}, action = {}) => {
 
   switch (action.type) {
@@ -30,6 +32,8 @@ export const product = (state = {}, action = {}) => {
       return state;
   }
 }
+
+// Products reducer
 
 export const products = (
   state = {
@@ -88,6 +92,8 @@ export const products = (
       return state
   }
 }
+
+// IsSideMenuOpen reducer
 
 export const isSideMenuOpen = (state = false, action) => {
   switch (action.type) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Categories from '../Categories/Categories'
+import Categories from './Categories/Categories'
 import Sort from './Sort/Sort'
 import ProductsContainer from './Products/ProductsContainer'
 import { categoriesList, sortList } from '../../lib/config'

@@ -5,11 +5,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import './SideMenuToggler.css'
 
 const SideMenuToggler = ({ handleClick = f => f }) =>
-  <span
+  <button
     onClick={handleClick}
-    className='header-menu'>
+    className='menu-toggler'
+  >
     <FontAwesomeIcon icon={faBars} />
-  </span>
+  </button>
 
 SideMenuToggler.propTypes = {
   handleClick: PropTypes.func

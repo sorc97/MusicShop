@@ -26,7 +26,11 @@
   grid-row: content;
 }
 
-@media screen and (max-width: 575px) {
+.cart-totalPrice {
+  justify-self: right;
+}
+
+@media screen and (max-width: 768px) {
   .table-header {
     display: none;
   }

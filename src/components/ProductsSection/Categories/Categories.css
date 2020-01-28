@@ -11,16 +11,16 @@
   padding-right: 30px;
 }
 
-.categories-list{
+.categories>.categories-list{
   background-color: #fff;
   width: 100%;
 }
 
-.categories-item{
+.categories .categories-item{
   border-bottom: 2px solid #efefef;
 }
 
-.categories-link{
+.categories .categories-link{
   display: inline-block;
   padding: 10px 15px;
   color: black;
@@ -29,12 +29,12 @@
   transition: all .2s ease;
 }
 
-.categories-link:hover{
+.categories .categories-link:hover{
   background-color: #000;
   color: #fff;
 }
 
-.categories-link.active{
+.categories .categories-link.active{
   background-color: #000;
   color: #fff;
 }

@@ -15,59 +15,57 @@ const buttonStyle = {
 class ProductsItem extends Component {
 
   shouldComponentUpdate(prevProps) {
-    if(prevProps.name === this.props.name) return false;
+    if (prevProps.name === this.props.name) return false;
   }
-  
+
   render() {
     const {
-      name, 
-      category, 
-      img, 
-      price, 
+      name,
+      category,
+      img,
+      price,
       _id,
-    } = this.props; 
+    } = this.props;
 
-    return(
+    return (
       <li className='product'>
-        <div className='img-wrapper'>
-          <Link className='img-link' to={`/product/${_id}`}>
-            <img src={img} alt='product img'/>
-          </Link>
-        </div>
+        <Link className='img-link' to={`/product/${_id}`}>
+          <img src={img} alt='product img' />
+        </Link>
         <div className='product-caption'>
-          <CategoryLink 
-            className='product-category' 
-            category={category} 
+          <CategoryLink
+            className='product-category'
+            category={category}
           />
-          <h1 className='product-name'>
+          <h2 className='product-name'>
             <Link to={`/product/${_id}`}>
               {name}
             </Link>
-          </h1>
+          </h2>
         </div>
-        <h2 className='product-price'>{price} р.</h2>
-        <AddToCartButton 
-          style={buttonStyle} 
+        <h4 className='product-price'>{price} р.</h4>
+        <AddToCartButton
+          style={buttonStyle}
           id={_id}
-          className='product-button'/>
+          className='product-button' />
       </li>
     )
   }
 }
 
 ProductsItem.propTypes = {
-  name: PropTypes.string, 
-  category: PropTypes.string, 
-  img: PropTypes.string, 
-  price: PropTypes.string, 
+  name: PropTypes.string,
+  category: PropTypes.string,
+  img: PropTypes.string,
+  price: PropTypes.string,
   _id: PropTypes.string,
 }
 
 ProductsItem.defaultProps = {
-  name: "Unknown", 
-  category: "Unknown", 
-  img: "", 
-  price: "0", 
+  name: "Unknown",
+  category: "Unknown",
+  img: "",
+  price: "0",
   _id: "0",
 }
 

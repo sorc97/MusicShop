@@ -1,11 +1,18 @@
-.header-menu {
+.menu-toggler {
   display: none;
   cursor: pointer;
   font-size: 25px;
+  border: none;
+  background-color: transparent;
+}
+
+.menu-toggler:focus {
+  outline: none;
+  color: #7c7c7c;
 }
 
 @media screen and (max-width: 992px) {
-  .header-menu {
+  .menu-toggler {
     display: inline-block;
   }
 } 

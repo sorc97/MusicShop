@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = ({ logo = '' }) =>
   <footer className='footer'>
     <div className='container'>
-      <h1 className='logo'>
+      <Link to='/' className='logo'>
         {logo}
-      </h1>
+      </Link>
     </div>
   </footer>
 

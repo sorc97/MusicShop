@@ -70,7 +70,7 @@ class Products extends Component {
           categoryName={categoryName}
           search={search} />
         {isFetching && products.length === 0 && <h2>Loading...</h2>}
-        {!isFetching && products.length === 0 && <h2>Нет товаров</h2>}
+        {!isFetching && products.length === 0 && <h2 className='empty'>Нет товаров</h2>}
         <ProductsList products={products} />
         <Pagination
           allElements={sortedProducts}
