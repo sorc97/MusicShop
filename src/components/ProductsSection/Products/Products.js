@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ProductsList from './ProductsList/ProductsList'
 import ProductsCaption from './ProductsCaption/ProductsCaption'
 import Pagination from '../../Pagination/Pagination'
-import { productsPerPage } from '../../../lib/config'
+import { productsPerPage } from '../../../config'
 import './Products.css'
 
 class Products extends Component {

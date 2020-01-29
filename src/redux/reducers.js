@@ -1,7 +1,7 @@
 import C from './constants'
 import {
   initialCart,
-} from '../lib/config'
+} from '../config'
 
 // Product reducer
 

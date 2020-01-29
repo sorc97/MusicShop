@@ -42,11 +42,13 @@
 
 .side-menu-close {
   position: absolute;
-  right: 15px;
+  right: 10px;
   top: 10px;
-  font-size: 35px;
+  font-size: 40px;
   color: #fff;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 @keyframes slideRight {

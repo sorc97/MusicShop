@@ -1,5 +1,6 @@
 .products-caption{
   display: flex;
+  align-items: center;
   margin-bottom: 30px;
 }
 
@@ -9,8 +10,13 @@
 }
 
 .products-goBack {
+  display: flex;
   margin-left: 20px;
   font-size: 35px;
   cursor: pointer;
   color: #000;
+}
+
+.goBack-icon {
+  width: 1em;
 }

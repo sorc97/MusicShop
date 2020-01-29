@@ -1,4 +1,5 @@
 import C from './constants'
+
 // Fetch actions
 export const requestProducts = () => ({
   type: C.REQUEST_PRODUCTS

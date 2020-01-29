@@ -36,6 +36,11 @@
   padding: 15px;
   background-color: rgb(255, 118, 118);
   color: #fff;
+  transition: background-color .2s ease;
+}
+
+.cart-product-remove:hover {
+  background-color: #fa3e3e;
 }
 
 /* Media queries */

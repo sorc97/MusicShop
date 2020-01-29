@@ -12,7 +12,7 @@ const SideMenu = ({
     onClick={sideMenuClickHandler}
     className='side-menu'
   >
-    <span className='side-menu-close'>&times;</span>
+    <button type='button' className='side-menu-close'>&times;</button>
     {children}
   </div>
 

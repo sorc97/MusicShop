@@ -1,4 +1,4 @@
-import { makeURL } from '../lib/helpers'
+import { makeURL } from './lib/helpers'
 
 export const logo = 'MusicShop';
 

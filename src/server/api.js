@@ -19,9 +19,10 @@ router.get('/products/category/:category', (req, res) => {
 })
 
 router.get('/products/search/:query', (req, res) => {
-  let { query } = req.params;
+  let query = decodeURI(req.params.query) || '';
+  
   let nameExpQuery = new RegExp(query.toUpperCase());
-  let categoryExpQuery = new RegExp(query.toUpperCase());
+  let categoryExpQuery = new RegExp(query.toLowerCase());
 
   Product.find({ // Find by name field
     name: nameExpQuery 

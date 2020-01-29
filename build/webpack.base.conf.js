@@ -1,5 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin  = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Constants
@@ -39,7 +39,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: { sourceMap: true },
-        exclude: '/node_modules/'
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -55,7 +55,7 @@ module.exports = {
             options: { sourceMap: true, config: { path: './postcss.config.js' } }
           },
         ],
-        exclude: '/node_modules/'
+        exclude: /node_modules/
       }
     ]
   },

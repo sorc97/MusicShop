@@ -4,8 +4,7 @@ import HeaderContainer from './Header/HeaderContainer'
 import SideMenuContainer from './SideMenu/SideMenuContainer'
 import Footer from './Footer/Footer'
 import CategoriesList from '../CategoriesList/CategoriesList'
-import { logo } from '../../lib/config'
-import { categoriesList } from '../../lib/config'
+import { categoriesList, logo } from '../../config'
 
 const PageTemplate = ({
   children

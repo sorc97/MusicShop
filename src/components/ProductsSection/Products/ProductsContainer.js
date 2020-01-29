@@ -15,7 +15,7 @@ import {
 import { 
   productsPerPage, 
   urlCategories 
-} from '../../../lib/config'
+} from '../../../config'
 
 const mapStateToProps = (
   {

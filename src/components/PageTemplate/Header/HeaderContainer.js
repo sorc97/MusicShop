@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Header from './Header'
-import { logo } from '../../../lib/config'
+import { logo } from '../../../config'
 import { toggleSideMenu } from '../../../redux/actionCreators'
 
 const HeaderContainer = connect(

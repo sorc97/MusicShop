@@ -1,0 +1,5 @@
+{
+  "port": 3000,
+  "mongoUri": "mongodb://nnd1997:64809200@cluster0-shard-00-00-3hvcl.azure.mongodb.net:27017,cluster0-shard-00-01-3hvcl.azure.mongodb.net:27017,cluster0-shard-00-02-3hvcl.azure.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+  "baseUrl": "http://nnd1997.ru/music-shop"
+}
