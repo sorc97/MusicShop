@@ -11,7 +11,6 @@ const PATHS = {
 }
 
 module.exports = {
-  mode: 'development',
   entry: PATHS.src,
   output: {
     path: PATHS.dist,
