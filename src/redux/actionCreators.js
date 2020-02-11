@@ -3,7 +3,7 @@ import C from './constants'
 // Fetch actions
 export const requestProducts = () => ({
   type: C.REQUEST_PRODUCTS
-}) 
+})
 
 export const receiveProducts = (products, fetchedBy) => ({
   type: C.RECEIVE_PRODUCTS,
@@ -14,7 +14,7 @@ export const receiveProducts = (products, fetchedBy) => ({
 export const fetchProducts = (url, fetchedBy) => dispatch => {
   dispatch(requestProducts());
 
-  fetch(url)
+  fetch(url, { mode: 'cors' })
     .then(
       res => res.json(),
       err => console.error('An error occurred ', err)
