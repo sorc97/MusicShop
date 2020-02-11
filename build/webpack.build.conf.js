@@ -5,6 +5,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
+  output: {
+    publicPath: '/music-shop/',
+  },
   plugins: [
     new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin()

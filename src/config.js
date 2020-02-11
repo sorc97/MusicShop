@@ -34,4 +34,4 @@ export const initialCart =
     JSON.parse(localStorage['musicShop-cart']) :
     []
 
-export const productsPerPage = 6;
+export const productsPerPage = 9;

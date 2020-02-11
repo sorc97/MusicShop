@@ -15,7 +15,6 @@ module.exports = {
   output: {
     path: PATHS.dist,
     filename: `${PATHS.assets}js/[name].[chunkhash].js`,
-    publicPath: '/'
   },
   externals: {  // External variables
     paths: PATHS
