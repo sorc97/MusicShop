@@ -28,7 +28,7 @@ mongoose
   })
 
 // Production mode
-if (process.env.NODE_ENV === 'production') {
+/* if (process.env.NODE_ENV === 'production') {
   // Calculating path of static folder 
   const staticFolder = path.join(__dirname, '../../dist');
   // For every request use static folder
@@ -39,4 +39,4 @@ if (process.env.NODE_ENV === 'production') {
     const responseFile = path.resolve(__dirname, staticFolder, 'index.html');
     res.sendFile(responseFile);
   })
-}
+} */

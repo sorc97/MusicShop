@@ -23,17 +23,17 @@ export const fetchProducts = (url, fetchedBy) => dispatch => {
 }
 
 export const fetchAllProducts = () => dispatch => {
-  return dispatch(fetchProducts(`/api/products`, 'main'));
+  return dispatch(fetchProducts(`http://nnd1997.ru:50/api/products`, 'main'));
 }
 
 export const fetchProductsByParam = (path, param) => dispatch => {
   return dispatch(
-    fetchProducts(`/api/products/${path}/${param}`, 'param')
+    fetchProducts(`http://nnd1997.ru:50/api/products/${path}/${param}`, 'param')
   );
 }
 
 export const fetchProductById = id => dispatch => {
-  return dispatch(fetchProducts(`/api/products/${id}`, 'id'))
+  return dispatch(fetchProducts(`http://nnd1997.ru:50/api/products/${id}`, 'id'))
 }
 
 // Cart actions
