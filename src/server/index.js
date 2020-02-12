@@ -9,7 +9,7 @@ const app = express();
 const PORT = config.get('port') || 3000;
 
 //middleware
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/api', require('./api'));
 
